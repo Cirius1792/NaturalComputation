@@ -20,7 +20,7 @@ if __name__ == '__main__':
     prob = pg.problem(my_problem(3))
     print(prob)
     #class pygmo.de(gen = 1, F = 0.8, CR = 0.9, variant = 2, ftol = 1e-6, xtol = 1e-6, seed = random)
-    gen = 500
+    gen = 50
     F = 0.8
     CR = 0.9
     seed = 7
