@@ -24,10 +24,12 @@ class APPlotter:
     #     plt.pause(0.5)
 
     def update(self, aps, radius):
-        circles = []
         for index in range(0,len(aps), 2):
             x,y = aps[index], aps[index+1]
             circle = plt.Circle((x,y), radius, color='green', alpha=0.3)
             plt.gcf().gca().add_artist(circle)
         show(block=False)
         plt.pause(0.5)
+
+    def _prepare_solution(self, aps):
+        pass

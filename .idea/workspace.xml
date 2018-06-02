@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c77bc12f-7997-41f3-a355-1756206d91c8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/200clients.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/400clients.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AccessPointNC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AccessPointNC.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,64 +19,113 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/AccessPointNC$test_lib.coverage" NAME="test_lib Coverage Results" MODIFIED="1527686922229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/Tests" />
     <SUITE FILE_PATH="coverage/NaturalComputation$test_lib.coverage" NAME="test_lib Coverage Results" MODIFIED="1527950475662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/Tests" />
-    <SUITE FILE_PATH="coverage/NaturalComputation$my_first_problem.coverage" NAME="my_first_problem Coverage Results" MODIFIED="1527944610946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$my_first_problem.coverage" NAME="my_first_problem Coverage Results" MODIFIED="1527956189695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint" />
     <SUITE FILE_PATH="coverage/AccessPointNC$my_first_problem.coverage" NAME="my_first_problem Coverage Results" MODIFIED="1527690013500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint" />
-    <SUITE FILE_PATH="coverage/NaturalComputation$wap_problem.coverage" NAME="wap_problem Coverage Results" MODIFIED="1527952419090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$wap_problem.coverage" NAME="wap_problem Coverage Results" MODIFIED="1527963453962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_lib.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/Tests/test_lib.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my_first_problem.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wap_problem.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="81" column="13" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="APPlotter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/axes/_base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="1871" selection-start-line="1871" selection-end-line="1871" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="test_lib.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/Tests/test_lib.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="my_first_problem.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="30" selection-start-line="30" selection-end-line="30" />
+                  <folding>
+                    <element signature="e#0#19#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="wap_problem.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1035">
+                  <caret line="90" column="25" lean-forward="true" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pygmo/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="179">
+                  <caret line="368" selection-start-line="368" selection-end-line="368" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="APPlotter.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="476">
+                  <caret line="28" selection-start-line="28" selection-end-line="31" selection-end-column="22" />
+                  <folding>
+                    <element signature="e#0#40#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="solution_evaluer.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="287">
+                  <caret line="31" selection-start-line="31" selection-end-line="31" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="solution_evaluer.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="267">
+                  <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -88,6 +133,19 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>...</find>
+      <find>self.bounds['S_LB']</find>
+      <find>self.bounds['S_LP']</find>
+      <find>xself.bounds['S_UB']</find>
+      <find>'S_LP'</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>x</replace>
+      <replace>'S_LB'</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,6 +157,7 @@
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_statement.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py" />
+        <option value="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" />
       </list>
     </option>
@@ -112,10 +171,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -142,6 +202,12 @@
               <item name="NaturalComputation" type="462c0819:PsiDirectoryNode" />
               <item name="WirelessAccessPoint" type="462c0819:PsiDirectoryNode" />
               <item name="problem_definition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NaturalComputation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NaturalComputation" type="462c0819:PsiDirectoryNode" />
+              <item name="WirelessAccessPoint" type="462c0819:PsiDirectoryNode" />
+              <item name="solution_evaluer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NaturalComputation" type="b2602c69:ProjectViewProjectNode" />
@@ -249,8 +315,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.wap_problem" />
-        <item itemvalue="Python.test_lib" />
         <item itemvalue="Python.my_first_problem" />
+        <item itemvalue="Python.test_lib" />
       </list>
     </recent_temporary>
   </component>
@@ -268,23 +334,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32957748" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37953794" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34204793" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16739607" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32893288" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1673774" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32896462" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32893288" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.79212254" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.39872068" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39933994" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -300,19 +365,19 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31838074" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1673774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.37953794" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.375817" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32893288" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32896462" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32893288" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32957748" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="SciView" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.39872068" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Python Console" order="12" />
     </layout-to-restore>
@@ -328,17 +393,38 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py</url>
-          <line>29</line>
+          <line>52</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py</url>
-          <line>89</line>
-          <option name="timeStamp" value="5" />
+          <line>107</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="11" />
     </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>math.ceil((l**2)/(2*math.pi*(self.radius**2)))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>math.ceil((bounds['S_LP']*bounds['S_UP'])/(2*math.pi*(self.radius**2)))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/Tests/test_lib.py">
@@ -352,6 +438,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -396,13 +485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/axes/_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -410,20 +492,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1745688252/pygmo/core/algorithm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="265" column="8" selection-start-line="265" selection-start-column="8" selection-end-line="265" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        <state relative-caret-position="476">
+          <caret line="28" selection-start-line="28" selection-end-line="31" selection-end-column="22" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pygmo/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="368" selection-start-line="368" selection-end-line="368" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="81" column="13" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+        <state relative-caret-position="1035">
+          <caret line="90" column="25" lean-forward="true" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
