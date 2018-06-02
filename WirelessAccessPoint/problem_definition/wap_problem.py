@@ -78,7 +78,7 @@ def load_clients(path):
 if __name__ == '__main__':
     path = "C:/Users/CiroLucio/PycharmProjects/NaturalComputation/WirelessAccessPoint/200clients.txt"
     clients = load_clients(path)
-    clinets = clients[0:math.ceil(len(clients)/2)]
+    #clinets = clients[0:math.ceil(len(clients)/2)]
     #plotter = APPlotter(clients)
     bounds = {'S_LB':SPACE_L, 'S_UB':SPACE_U}
     obj = {'CLIENTS':clients, 'RADIUS':50.0, 'COSTS':1.0}
