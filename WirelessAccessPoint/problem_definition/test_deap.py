@@ -69,21 +69,12 @@ toolbox.register("mutate", tools.mutFlipBit, indpb=0.05)
 # drawn randomly from the current generation.
 toolbox.register("select", tools.selTournament, tournsize=3)
 
-
-# ----------
-
 def main():
     random.seed(64)
 
     # create an initial population of 300 individuals (where
     # each individual is a list of integers)
-    pop = toolbox.population(n=300)
-
-    # CXPB  is the probability with which two individuals
-    #       are crossed
-    #
-    # MUTPB is the probability for mutating an individual
-    CXPB, MUTPB = 0.5, 0.2
+    pop = toolbox.population(n=POP_SIZE)
 
     print("Start of evolution")
 
@@ -101,7 +92,7 @@ def main():
     g = 0
 
     # Begin the evolution
-    while max(fits) < 1 and g < 2000:
+    while g < 40:
         # A new generation
         g = g + 1
         print("-- Generation %i --" % g)
@@ -117,14 +108,12 @@ def main():
             # cross two individuals with probability CXPB
             if random.random() < CXPB:
                 toolbox.mate(child1, child2)
-
                 # fitness values of the children
                 # must be recalculated later
                 del child1.fitness.values
                 del child2.fitness.values
-
+        #############MUTATION PHASE ##########################
         for mutant in offspring:
-
             # mutate an individual with probability MUTPB
             if random.random() < MUTPB:
                 toolbox.mutate(mutant)
@@ -145,6 +134,8 @@ def main():
         fits = [ind.fitness.values[0] for ind in pop]
 
         length = len(pop)
+
+        #for values in fits[0]:
         mean = sum(fits) / length
         sum2 = sum(x * x for x in fits)
         std = abs(sum2 / length - mean ** 2) ** 0.5
@@ -158,7 +149,5 @@ def main():
 
     best_ind = tools.selBest(pop, 1)[0]
     print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values))
-
-
-if __name__ == "__main__":
-    main()
+    eval = SolutionEvaluer()
+    eval.plot(best_ind)

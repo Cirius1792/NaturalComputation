@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c77bc12f-7997-41f3-a355-1756206d91c8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/problem_support_functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_scoop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/priorityq.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +21,13 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/AccessPointNC$test_lib.coverage" NAME="test_lib Coverage Results" MODIFIED="1527686922229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/Tests" />
     <SUITE FILE_PATH="coverage/NaturalComputation$test_lib.coverage" NAME="test_lib Coverage Results" MODIFIED="1527950475662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/Tests" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$solution_evaluer2.coverage" NAME="solution_evaluer2 Coverage Results" MODIFIED="1529256635698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$test_scoop.coverage" NAME="test_scoop Coverage Results" MODIFIED="1529252638114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
     <SUITE FILE_PATH="coverage/NaturalComputation$my_first_problem.coverage" NAME="my_first_problem Coverage Results" MODIFIED="1527956189695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint" />
     <SUITE FILE_PATH="coverage/AccessPointNC$my_first_problem.coverage" NAME="my_first_problem Coverage Results" MODIFIED="1527690013500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint" />
-    <SUITE FILE_PATH="coverage/NaturalComputation$wap_problem.coverage" NAME="wap_problem Coverage Results" MODIFIED="1527964456930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
     <SUITE FILE_PATH="coverage/NaturalComputation$test_deap.coverage" NAME="test_deap Coverage Results" MODIFIED="1529244123496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
-    <SUITE FILE_PATH="coverage/NaturalComputation$deap_solution.coverage" NAME="deap_solution Coverage Results" MODIFIED="1529250048994" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$wap_problem.coverage" NAME="wap_problem Coverage Results" MODIFIED="1529258946555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$deap_solution.coverage" NAME="deap_solution Coverage Results" MODIFIED="1529267733824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
     <SUITE FILE_PATH="coverage/NaturalComputation$using_deap.coverage" NAME="using_deap Coverage Results" MODIFIED="1529231981572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
   </component>
   <component name="DatabaseView">
@@ -41,88 +45,30 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7155361">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="deap_solution.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="144" column="44" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="44" />
-                  <folding>
-                    <element signature="e#0#11#0" expanded="true" />
-                    <element signature="e#1976#2022#0" />
-                    <element signature="e#2059#2522#0" />
-                    <element signature="e#2566#2955#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="deap_alg_par.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-125">
-                  <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="test_deap.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="771">
-                  <caret line="163" column="10" selection-start-line="71" selection-end-line="163" selection-end-column="10" />
-                  <folding>
-                    <element signature="e#788#801#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="wap_problem.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-                  <folding>
-                    <element signature="e#0#11#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="solution_evaluer.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="12" column="22" selection-end-line="47" selection-end-column="69" />
-                  <folding>
-                    <element signature="e#0#11#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="solution_evaluer2.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="731">
-                  <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
-                  <folding>
-                    <element signature="e#0#11#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="deap_solution.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="188" column="19" selection-start-line="188" selection-start-column="19" selection-end-line="188" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#5734#6490#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deap_alg_par.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -155,14 +101,15 @@
         <option value="$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/APPlotter.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py" />
-        <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/Tests/DE_tests.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/using_deap.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/problem_support_functions.py" />
-        <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py" />
+        <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_scoop.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" />
-        <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" />
+        <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py" />
+        <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" />
+        <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" />
       </list>
     </option>
   </component>
@@ -188,7 +135,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -223,6 +169,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -233,10 +180,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\CiroLucio\PycharmProjects\NaturalComputation\WirelessAccessPoint" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\CiroLucio\PycharmProjects\NaturalComputation\WirelessAccessPoint\solution_evaluer" />
       <recent name="C:\Users\CiroLucio\PycharmProjects\NaturalComputation\WirelessAccessPoint" />
     </key>
   </component>
@@ -272,7 +220,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="my_first_problem" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="solution_evaluer2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AccessPointNC" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -280,12 +228,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WirelessAccessPoint" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WirelessAccessPoint/my_first_problem.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -310,7 +258,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="using_deap" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_scoop" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AccessPointNC" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -323,7 +271,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\CiroLucio\PycharmProjects\NaturalComputation\WirelessAccessPoint\problem_definition\test_deap.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_scoop.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -349,19 +297,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.my_first_problem" />
-      <item itemvalue="Python.wap_problem" />
-      <item itemvalue="Python.using_deap" />
       <item itemvalue="Python.deap_solution" />
       <item itemvalue="Python.test_deap" />
+      <item itemvalue="Python.solution_evaluer2" />
+      <item itemvalue="Python.test_scoop" />
+      <item itemvalue="Python.wap_problem" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.deap_solution" />
-        <item itemvalue="Python.test_deap" />
-        <item itemvalue="Python.using_deap" />
         <item itemvalue="Python.wap_problem" />
-        <item itemvalue="Python.my_first_problem" />
+        <item itemvalue="Python.solution_evaluer2" />
+        <item itemvalue="Python.test_scoop" />
+        <item itemvalue="Python.test_deap" />
       </list>
     </recent_temporary>
   </component>
@@ -379,53 +327,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32957748" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32900432" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29836065" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.33113313" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14498934" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32896462" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.39872068" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4021858" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32893288" />
-    </layout>
-    <layout-to-restore>
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14498934" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.39872068" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29545453" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32893288" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32900432" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4021858" />
-      <window_info anchor="right" id="Database" order="4" weight="0.32896462" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33113313" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32957748" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29520696" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33006537" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1369936" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32896462" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.45149255" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-    </layout-to-restore>
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40087146" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3278867" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -442,9 +368,24 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py</url>
-          <line>107</line>
-          <option name="timeStamp" value="10" />
+          <line>116</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py</url>
+          <line>160</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -454,29 +395,172 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="17" />
+      <option name="time" value="30" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>ind.fitness.values</expression-string>
+        <expression-string>sol[ap[WIRE]]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>math.ceil((l**2)/(2*math.pi*(self.radius**2)))</expression-string>
+        <expression-string>ap[WIRE]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>math.ceil((bounds['S_LP']*bounds['S_UP'])/(2*math.pi*(self.radius**2)))</expression-string>
+        <expression-string>aps[ap]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sol</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sol[WIRE]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>[ aps[sol[WIRE]][X], aps[sol[WIRE]][Y]]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>[x,y]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>math.sqrt((source[X] - individual[n][X]) ** 2 + (source[Y] - individual[n][Y]) ** 2)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>individual[n][X]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>individual[n]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2397">
+          <caret line="158" column="64" lean-forward="true" selection-start-line="158" selection-start-column="64" selection-end-line="158" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#5734#6490#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2669">
+          <caret line="172" column="35" selection-start-line="172" selection-start-column="35" selection-end-line="172" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#5734#6490#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="144" column="44" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#5734#6490#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2703">
+          <caret line="163" column="10" selection-start-line="71" selection-end-line="163" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="22" selection-end-line="47" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -501,9 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,9 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -555,9 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="29" column="49" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -582,9 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -699,26 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="22" selection-end-line="47" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/problem_support_functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -726,42 +778,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" selection-end-line="47" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_scoop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/priorityq.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/wap_problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/test_deap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="163" column="10" selection-start-line="71" selection-end-line="163" selection-end-column="10" />
+        <state relative-caret-position="497">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/importlib/_bootstrap_external.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-99">
+          <caret line="425" selection-start-line="425" selection-end-line="425" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/deap/tools/migration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="41" column="57" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
           <folding>
-            <element signature="e#788#801#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="144" column="44" selection-start-line="144" selection-start-column="44" selection-end-line="144" selection-end-column="44" />
+        <state relative-caret-position="480">
+          <caret line="188" column="19" selection-start-line="188" selection-start-column="19" selection-end-line="188" selection-end-column="19" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#1976#2022#0" />
-            <element signature="e#2059#2522#0" />
-            <element signature="e#2566#2955#0" />
+            <element signature="e#5734#6490#0" />
           </folding>
         </state>
       </provider>

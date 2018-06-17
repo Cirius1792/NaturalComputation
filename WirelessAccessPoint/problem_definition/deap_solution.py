@@ -1,9 +1,18 @@
 import math
+import time
+from multiprocessing import freeze_support
+
+import numpy
 import random
 
 from deap import base
 from deap import creator
 from deap import tools
+from deap import algorithms
+from multiprocessing import Event, Pipe, Process
+
+
+from joblib import Parallel, delayed
 import networkx as nx
 
 from WirelessAccessPoint.solution_evaluer.solution_evaluer2 import SolutionEvaluer
@@ -16,7 +25,7 @@ def rand_ap():
     cable  = random.randint(-1, N_AP+1)
     return {X:x,Y:y,WIRE:cable}
 ########################################################################################################################
-########################FITNESSS FUNCTION###############################################################################
+######################  FITNESSS FUNCTION  ############################################################################
 def eval_fitness_costs_coperture(individual):
     #Utilizzo un grafo per modellare l'interconnessione fra gli ap. Successivamente il grafo verrà utilizzato per ricercare
     #un percorso fra ogni ap e la Sorgente del segnale, se un path non esiste l'ap non viene considerato per la valutazione
@@ -27,10 +36,9 @@ def eval_fitness_costs_coperture(individual):
         if nx.has_path(ap_graph, SOURCE_CABLE, index):
             to_eval.append(individual[index])
     #ret =  _coperture(to_eval), _AP_costs(to_eval, ap_graph), wire_costs(to_eval, ap_graph),
-    ret =  _coperture(to_eval), _AP_costs(to_eval, ap_graph),
-    return ret
-########################FUNZIONI DI APPOGGIO PER LA FITNESS#############################################################
-def _AP_costs(individual, g):
+    return _coperture(to_eval), _AP_costs(to_eval),wire_costs(to_eval,ap_graph)
+######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
+def _AP_costs(individual):
     apc = len(individual) * AP_COST
     return apc
 
@@ -38,16 +46,19 @@ def wire_costs(individual, g):
     to_visit = [SOURCE_CABLE]
     cost = 0
     # BFS sul grafo per calcolare il costo del cavo
+    visited = set()
     while to_visit:
         v = to_visit.pop()
+        visited.add(v)
         if v == SOURCE_CABLE:
             source = {X: SOURCE_X, Y: SOURCE_Y}
         else:
-            source = v
+            source = individual[v]
         for n in g[v]:
-            dist = math.sqrt((source[X] - individual[n][X]) ** 2 + (source[Y] - individual[n][Y]) ** 2)
-            cost += dist * WIRE_COST
-            to_visit.append(n)
+            if n not in visited:
+                dist = math.sqrt((source[X] - individual[n][X]) ** 2 + (source[Y] - individual[n][Y]) ** 2)
+                cost += dist * WIRE_COST
+                to_visit.append(n)
     return cost
 
 def _coperture(individual):
@@ -64,6 +75,7 @@ def _coperture(individual):
             index += 1
     return covered / len(clients)
 ########################################################################################################################
+##################### FUNZIONE CUSTOM DI MUTAZIONE  ####################################################################
 def mutate_individual(individual, mu=0.0, sigma=0.2, indpb=INDPB):
     for i in range(len(individual)):
         #Muto X
@@ -77,13 +89,19 @@ def mutate_individual(individual, mu=0.0, sigma=0.2, indpb=INDPB):
             individual[i][WIRE] = random.randint(-1, N_AP+1)
     return individual,
 
-creator.create("Fitness", base.Fitness, weights=(1.0,-1.0,))
+########################################################################################################################
+
+creator.create("Fitness", base.Fitness, weights=(1.0,-1.0, -1.0))
 creator.create("Individual", list, fitness=creator.Fitness)
 
 toolbox = base.Toolbox()
+#per l'esecuzione multi processore
+#pool = multiprocessing.Pool()
+#toolbox.register("map", pool.map)
 
 #Attribute Generator
 toolbox.register("attr_AP", rand_ap)
+#toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_AP, N_AP)
 toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_AP, N_AP)
 
 # define the population to be a list of individuals
@@ -95,94 +113,87 @@ toolbox.register("evaluate", eval_fitness_costs_coperture)
 # register the crossover operator
 toolbox.register("mate", tools.cxTwoPoint)
 
-toolbox.register("mutate", mutate_individual, mu=0.0, sigma=0.2, indpb=INDPB)
+toolbox.register("mutate", mutate_individual, mu=MU, sigma=SIGMA, indpb=INDPB)
 toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
 
 
 
 # ----------
 
-def main():
+
+def main2(pop=None, n_gen=N_GEN, verbose=True):
+    random.seed(64)
+    if pop is None:
+        pop = toolbox.population(n=POP_SIZE)
+    hof = tools.ParetoFront()
+    stats = tools.Statistics(lambda ind: ind.fitness.values)
+    stats.register("avg", numpy.mean, axis=0)
+    stats.register("std", numpy.std, axis=0)
+    stats.register("min", numpy.min, axis=0)
+    stats.register("max", numpy.max, axis=0)
+
+    pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
+                                   stats=stats, halloffame=hof, verbose=verbose)
+    if verbose:
+        best_inds = tools.selBest(hof, 5)
+        for best_ind in best_inds:
+            print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values))
+            eval = SolutionEvaluer()
+            eval.plot(best_ind)
+    return pop, log
+
+
+##########NON FUNZIONA, PER COSTRUZIONE DELLA CLASSE NON E' POSSIBILE USARE JOBLIB######################################
+def parallel_evolution():
+
     random.seed(64)
 
-    # create an initial population of 300 individuals (where
-    # each individual is a list of integers)
-    pop = toolbox.population(n=POP_SIZE)
+    NISLES = 4
+    islands = [toolbox.population(n=300) for i in range(NISLES)]
+    migration_interval = 5
+    generations = 10
+    with Parallel(n_jobs=4) as parallel:
+        for i in range(0, generations, migration_interval):
+            res = parallel(delayed(main2)(island,migration_interval, False) for island in islands)
+            islands = [pop for pop, logbook in res]
+            tools.migRing(islands, int(POP_SIZE/10), tools.selBest)
 
-    print("Start of evolution")
+    for island in islands:
+        best_inds = tools.selBest(island, 1)
+        for best_ind in best_inds:
+            print("Best individual is:\n\t %s\n\t %s" % (best_ind, best_ind.fitness.values))
+            eval = SolutionEvaluer()
+            eval.plot(best_ind)
+            print("")
 
-    # Evaluate the entire population
-    fitnesses = list(map(toolbox.evaluate, pop))
-    for ind, fit in zip(pop, fitnesses):
-        ind.fitness.values = fit
+def multi_islands():
+    random.seed(64)
+    NISLES = 5
+    islands = [toolbox.population(n=300) for i in range(NISLES)]
+    # Unregister unpicklable methods before sending the toolbox.
+    toolbox.unregister("attr_AP")
+    toolbox.unregister("individual")
+    toolbox.unregister("population")
 
-    print("  Evaluated %i individuals" % len(pop))
+    NGEN, FREQ = 50, 5
+    toolbox.register("algorithm", algorithms.eaSimple, toolbox=toolbox,
+                     cxpb=0.5, mutpb=0.2, ngen=FREQ, verbose=False)
+    for i in range(0, NGEN, FREQ):
+        results = toolbox.map(toolbox.algorithm, islands)
+        islands = [pop for pop, logbook in results]
+        tools.migRing(islands, 15, tools.selBest)
 
-    # Extracting all the fitnesses of
-    fits = [ind.fitness.values[0] for ind in pop]
-
-    # Variable keeping track of the number of generations
-    g = 0
-
-    # Begin the evolution
-    while max(fits) < 1 and g < 5000:
-        # A new generation
-        g = g + 1
-        print("-- Generation %i --" % g)
-
-        # Select the next generation individuals
-        offspring = toolbox.select(pop, len(pop))
-        # Clone the selected individuals
-        offspring = list(map(toolbox.clone, offspring))
-
-        # Apply crossover and mutation on the offspring
-        for child1, child2 in zip(offspring[::2], offspring[1::2]):
-
-            # cross two individuals with probability CXPB
-            if random.random() < CXPB:
-                toolbox.mate(child1, child2)
-
-                # fitness values of the children
-                # must be recalculated later
-                del child1.fitness.values
-                del child2.fitness.values
-        #############MUTATION PHASE ####################################################################################
-        for mutant in offspring:
-            # mutate an individual with probability MUTPB
-            if random.random() < MUTPB:
-                toolbox.mutate(mutant)
-                del mutant.fitness.values
-
-        # Evaluate the individuals with an invalid fitness
-        invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-        fitnesses = map(toolbox.evaluate, invalid_ind)
-        for ind, fit in zip(invalid_ind, fitnesses):
-            ind.fitness.values = fit
-
-        print("  Evaluated %i individuals" % len(invalid_ind))
-
-        # The population is entirely replaced by the offspring
-        pop[:] = offspring
-
-        # Gather all the fitnesses in one list and print the stats
-        fits = [ind.fitness.values[0] for ind in pop]
-
-        length = len(pop)
-        mean = sum(fits) / length
-        sum2 = sum(x * x for x in fits)
-        std = abs(sum2 / length - mean ** 2) ** 0.5
-
-        print("  Min %s" % min(fits))
-        print("  Max %s" % max(fits))
-        print("  Avg %s" % mean)
-        print("  Std %s" % std)
-
-    print("-- End of (successful) evolution --")
-
-    best_ind = tools.selBest(pop, 1)[0]
-    print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values))
-    eval = SolutionEvaluer()
-    eval.plot(best_ind)
+    for island in islands:
+        best_inds = tools.selBest(island, 1)
+        for best_ind in best_inds:
+            print("Best individual is:\n\t %s\n\t %s" % (best_ind, best_ind.fitness.values))
+            eval = SolutionEvaluer()
+            eval.plot(best_ind)
+            print("")
+    return islands
 
 if __name__ == "__main__":
-    main()
+    start = time.time()
+    multi_islands()
+    stop = time.time()-start
+    print("Time: \t "+"{0:.4f}".format(stop))

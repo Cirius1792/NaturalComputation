@@ -7,7 +7,7 @@ PATH_CLINETS = "C:/Users/CiroLucio/PycharmProjects/NaturalComputation/WirelessAc
 #Costanti usate per modellare il problema:
 AP_TYPE = 1
 
-N_AP = 100
+N_AP = 10
 SOURCE_CABLE = N_AP+1
 UPPER_BOUND_GRID = 500.0
 LOWER_BOUND_GRID = -500.0
@@ -17,7 +17,10 @@ SOURCE_Y =250.0
 AP_COST = 10 if AP_TYPE == 1 else 15
 WIRE_COST = 1
 ####################PARAMETRI ALGORITMO GENETICO########################################################################
+N_GEN = 200
 INDPB = 0.07
+MU = 0.5
+SIGMA = 1
 TOURNAMENT_SIZE = 3
 POP_SIZE = 200
 # CXPB  is the probability with which two individuals
@@ -44,9 +47,8 @@ def build_ap_graph(individual):
     for index in range(len(individual)):
         source = index
         dest = individual[index][WIRE]
-        if dest == -1:
-            ap_graph.add_node(source)
-        elif source == dest:
+        if dest == -1 or source == dest:
+            #L'ap è spento o disconnesso
             ap_graph.add_node(source)
         else:
             ap_graph.add_edge(source, dest)

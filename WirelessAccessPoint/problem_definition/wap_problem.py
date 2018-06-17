@@ -4,6 +4,8 @@ import time
 from WirelessAccessPoint.APPlotter import APPlotter
 import numpy as np
 import pygmo as pg
+
+from WirelessAccessPoint.solution_evaluer.priorityq import PriorityQueue
 from WirelessAccessPoint.solution_evaluer.solution_evaluer import SolutionEvaluer
 
 SPACE_L = -500.00
@@ -91,7 +93,7 @@ if __name__ == '__main__':
     # f = prob.fitness(t)
     # print(str(f))
     # print(prob)
-    gen = 500
+    gen = 10
     F = 0.7
     CR = 0.85
     seed = 7
@@ -109,7 +111,7 @@ if __name__ == '__main__':
     # sol_eval.plot(best)
     # #MULTICORE
     archi = pg.archipelago(4, algo=algo, prob=prob, pop_size=30)
-    archi.evolve(5)
+    archi.evolve(4)
     archi.wait()
     res = [isl.get_population().champion_f for isl in archi]
     best = None
@@ -119,3 +121,9 @@ if __name__ == '__main__':
         else:
             best = isl.get_population()
     sol_eval.plot(best.get_x()[best.best_idx()])
+
+def save_pop(isl):
+    pop = isl.get_population()
+    pq = PriorityQueue()
+    for ind in pop:
+        pq.add(ind)

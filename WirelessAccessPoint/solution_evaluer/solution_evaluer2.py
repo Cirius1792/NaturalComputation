@@ -24,12 +24,13 @@ class SolutionEvaluer:
     def plot(self, sol):
         aps = self._prepare_solution(sol)
         covered = 0
+        plot(SOURCE_X, SOURCE_Y, 'bo')
         for c in self._clients:
             plot(c[0], c[1], 'or')
             found = False
             index = 0
-            while not found and index < len(sol):
-                dist = math.sqrt((c[0] - sol[index][X]) ** 2 + (c[1] - sol[index][Y]) ** 2)
+            while not found and index < len(aps):
+                dist = math.sqrt((c[0] - aps[index][X]) ** 2 + (c[1] - aps[index][Y]) ** 2)
                 if dist <= self._radius:
                     covered += 1
                     found = True
@@ -37,6 +38,8 @@ class SolutionEvaluer:
 
         for ap in aps:
             x,y = ap[X],ap[Y]
+            dst = sol[ap[WIRE]] if ap[WIRE] != N_AP+1 else {X:SOURCE_X, Y:SOURCE_Y}
+            plot([x,dst[X]], [y, dst[Y]], lw=0.5, C='gray')
             circle = plt.Circle((x, y), self._radius, color='green', alpha=0.3)
             plt.gcf().gca().add_artist(circle)
         show(block=False)
