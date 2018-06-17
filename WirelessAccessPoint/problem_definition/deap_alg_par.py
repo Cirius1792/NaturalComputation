@@ -7,7 +7,7 @@ PATH_CLINETS = "C:/Users/CiroLucio/PycharmProjects/NaturalComputation/WirelessAc
 #Costanti usate per modellare il problema:
 AP_TYPE = 1
 
-N_AP = 10
+N_AP = 100
 SOURCE_CABLE = N_AP+1
 UPPER_BOUND_GRID = 500.0
 LOWER_BOUND_GRID = -500.0

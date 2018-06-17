@@ -36,7 +36,7 @@ def eval_fitness_costs_coperture(individual):
         if nx.has_path(ap_graph, SOURCE_CABLE, index):
             to_eval.append(individual[index])
     #ret =  _coperture(to_eval), _AP_costs(to_eval, ap_graph), wire_costs(to_eval, ap_graph),
-    return _coperture(to_eval), _AP_costs(to_eval),wire_costs(to_eval,ap_graph)
+    return _coperture(to_eval), _AP_costs(to_eval),wire_costs(individual,ap_graph)
 ######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
 def _AP_costs(individual):
     apc = len(individual) * AP_COST
@@ -143,7 +143,6 @@ def main2(pop=None, n_gen=N_GEN, verbose=True):
     return pop, log
 
 
-##########NON FUNZIONA, PER COSTRUZIONE DELLA CLASSE NON E' POSSIBILE USARE JOBLIB######################################
 def parallel_evolution():
 
     random.seed(64)
@@ -151,7 +150,7 @@ def parallel_evolution():
     NISLES = 4
     islands = [toolbox.population(n=300) for i in range(NISLES)]
     migration_interval = 5
-    generations = 10
+    generations = 50
     with Parallel(n_jobs=4) as parallel:
         for i in range(0, generations, migration_interval):
             res = parallel(delayed(main2)(island,migration_interval, False) for island in islands)
@@ -194,6 +193,7 @@ def multi_islands():
 
 if __name__ == "__main__":
     start = time.time()
-    multi_islands()
+    #multi_islands()
+    parallel_evolution()
     stop = time.time()-start
     print("Time: \t "+"{0:.4f}".format(stop))
