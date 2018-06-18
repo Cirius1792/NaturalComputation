@@ -31,18 +31,22 @@ class SolutionEvaluer:
             index = 0
             while not found and index < len(aps):
                 dist = math.sqrt((c[0] - aps[index][X]) ** 2 + (c[1] - aps[index][Y]) ** 2)
-                if dist <= self._radius:
+                if dist <= RADIUS[aps[index][AP_TYPE]]:
                     covered += 1
                     found = True
                 index += 1
 
+        apt = [0,0]
         for ap in aps:
+            apt[ap[AP_TYPE]] += 1
             x,y = ap[X],ap[Y]
             dst = sol[ap[WIRE]] if ap[WIRE] != N_AP+1 else {X:SOURCE_X, Y:SOURCE_Y}
             plot([x,dst[X]], [y, dst[Y]], lw=0.5, C='gray')
-            circle = plt.Circle((x, y), self._radius, color='green', alpha=0.3)
+            circle = plt.Circle((x, y), RADIUS[ap[AP_TYPE]], color='green', alpha=0.3)
             plt.gcf().gca().add_artist(circle)
         show(block=False)
         plt.pause(0.5)
-        print("Used Access Point:\t" + str(len(aps)))
+
+        print("Used Access Point:\t" + str(len(aps)),end="\t")
+        print("AP1 : "+str(apt[0])+"\tAP2 : "+str(apt[1]))
         print("Covered "+str(covered)+" on "+str(len(self._clients)))

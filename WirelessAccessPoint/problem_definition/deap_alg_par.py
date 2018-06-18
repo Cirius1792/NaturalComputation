@@ -3,6 +3,7 @@ import networkx as nx
 X = 'x'
 Y = 'y'
 WIRE = 'wire'
+AP_TYPE = 'type'
 PATH_CLINETS = "../200clients.txt"
 #Costanti usate per modellare il problema:
 AP_TYPE = 1
@@ -11,13 +12,16 @@ N_AP = 100
 SOURCE_CABLE = N_AP+1
 UPPER_BOUND_GRID = 500.0
 LOWER_BOUND_GRID = -500.0
-RADIUS = 50 if AP_TYPE == 1 else 75
+RADIUS = [50, 75]
 SOURCE_X = -250.0
 SOURCE_Y =250.0
-AP_COST = 10 if AP_TYPE == 1 else 15
+AP_COST = [10, 15]
 WIRE_COST = 1
 ####################PARAMETRI ALGORITMO GENETICO########################################################################
 N_GEN = 200
+MIGRATION_PERC = 2
+#STOP_CONDITION = [1]
+STOP_CONDITION = 0
 INDPB = 0.07
 MU = 0.5
 SIGMA = 1

@@ -23,7 +23,8 @@ def rand_ap():
     x  = random.uniform(UPPER_BOUND_GRID, LOWER_BOUND_GRID)
     y  = random.uniform(UPPER_BOUND_GRID, LOWER_BOUND_GRID)
     cable  = random.randint(-1, N_AP+1)
-    return {X:x,Y:y,WIRE:cable}
+    ap_type = random.randint(0,1)
+    return {X:x,Y:y,WIRE:cable, AP_TYPE:ap_type}
 ########################################################################################################################
 ######################  FITNESSS FUNCTION  ############################################################################
 def eval_fitness_costs_coperture(individual):
@@ -39,7 +40,9 @@ def eval_fitness_costs_coperture(individual):
     return _coperture(to_eval), _AP_costs(to_eval),wire_costs(individual,ap_graph)
 ######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
 def _AP_costs(individual):
-    apc = len(individual) * AP_COST
+    apc = 0
+    for ap in individual:
+        apc += AP_COST[ap[AP_TYPE]]
     return apc
 
 def wire_costs(individual, g):
@@ -69,7 +72,7 @@ def _coperture(individual):
         index = 0
         while not found and index < len(individual):
             dist = math.sqrt((client[0] - individual[index][X]) ** 2 + (client[1] - individual[index][Y]) ** 2)
-            if dist <= RADIUS:
+            if dist <= RADIUS[individual[index][AP_TYPE]]:
                 covered += 1
                 found = True
             index += 1
@@ -87,6 +90,9 @@ def mutate_individual(individual, mu=0.0, sigma=0.2, indpb=INDPB):
         #Muto WIRE
         if random.random() < indpb:
             individual[i][WIRE] = random.randint(-1, N_AP+1)
+        #Muto AP_TYPE
+        if random.random() < indpb:
+            individual[i][AP_TYPE] = random.randint(0, 1)
     return individual,
 
 ########################################################################################################################
@@ -131,15 +137,25 @@ def main2(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     stats.register("max", numpy.max, axis=0)
 
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
-                                   stats=stats, halloffame=hof, verbose=verbose)
+                                   stats=stats, halloffame=hof, verbose=False)
     if verbose:
-        best_inds = tools.selBest(hof, 5)
+        best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
-            print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values))
-            eval = SolutionEvaluer()
-            eval.plot(best_ind)
+            #print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values))
+            print("Best individual fitness: \t"+str(best_ind.fitness.values))
+            #eval = SolutionEvaluer()
+            #eval.plot(best_ind)
     return pop, log, hof
 
+
+def stop_cond(islands,STOP_CONDITION = 0):
+    if STOP_CONDITION != 0:
+        for island in islands:
+            best_ind = tools.selBest(island, 1)[0]
+            for i in range(len(STOP_CONDITION)):
+                if best_ind.fitness.values[i] >= STOP_CONDITION[i]:
+                    return True
+    return False
 
 def parallel_evolution():
 
@@ -147,14 +163,17 @@ def parallel_evolution():
 
     NISLES = 4
     islands = [toolbox.population(n=300) for i in range(NISLES)]
-    migration_interval = 2
-    generations = 4
+    migration_interval = 10
+    generations = 500
     with Parallel(n_jobs=4) as parallel:
         hof = None
-        for i in range(0, generations, migration_interval):
-            res = parallel(delayed(main2)(island,migration_interval, hof, False) for island in islands)
+        it = 0
+        while it == 0 or (it < generations and not stop_cond(islands,STOP_CONDITION)):
+        #for i in range(0, generations, migration_interval):
+            res = parallel(delayed(main2)(island,migration_interval, hof, True) for island in islands)
             islands = [pop for pop, logbook, hof in res]
-            tools.migRing(islands, int(POP_SIZE/10), tools.selBest)
+            tools.migRing(islands, int((POP_SIZE/100)*MIGRATION_PERC), tools.selBest)
+            it += migration_interval
 
     for island in islands:
         best_inds = tools.selBest(island, 1)
