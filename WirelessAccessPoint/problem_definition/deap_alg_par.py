@@ -3,7 +3,7 @@ import networkx as nx
 X = 'x'
 Y = 'y'
 WIRE = 'wire'
-PATH_CLINETS = "C:/Users/CiroLucio/PycharmProjects/NaturalComputation/WirelessAccessPoint/200clients.txt"
+PATH_CLINETS = "../200clients.txt"
 #Costanti usate per modellare il problema:
 AP_TYPE = 1
 
