@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c77bc12f-7997-41f3-a355-1756206d91c8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" afterDir="false" />
-    </list>
+    <list default="true" id="c77bc12f-7997-41f3-a355-1756206d91c8" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -321,19 +318,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32957748" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29738563" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33006537" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29738563" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33006537" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.28118163" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32896462" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.45149255" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.45149255" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39651415" />
@@ -452,7 +448,7 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>[ aps[sol[WIRE]][X], aps[sol[WIRE]][Y]]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -462,7 +458,7 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string />
+        <expression-string>math.sqrt((source[X] - individual[n][X]) ** 2 + (source[Y] - individual[n][Y]) ** 2)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
