@@ -9,10 +9,10 @@ from deap import base
 from deap import creator
 from deap import tools
 from deap import algorithms
-from multiprocessing import Event, Pipe, Process
 
 
 from joblib import Parallel, delayed
+
 import networkx as nx
 
 from WirelessAccessPoint.solution_evaluer.solution_evaluer2 import SolutionEvaluer
@@ -95,9 +95,6 @@ creator.create("Fitness", base.Fitness, weights=(1.0,-1.0, -1.0))
 creator.create("Individual", list, fitness=creator.Fitness)
 
 toolbox = base.Toolbox()
-#per l'esecuzione multi processore
-#pool = multiprocessing.Pool()
-#toolbox.register("map", pool.map)
 
 #Attribute Generator
 toolbox.register("attr_AP", rand_ap)
@@ -121,11 +118,12 @@ toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
 # ----------
 
 
-def main2(pop=None, n_gen=N_GEN, verbose=True):
+def main2(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     random.seed(64)
     if pop is None:
         pop = toolbox.population(n=POP_SIZE)
-    hof = tools.ParetoFront()
+    if hof is None:
+        hof = tools.ParetoFront()
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", numpy.mean, axis=0)
     stats.register("std", numpy.std, axis=0)
@@ -140,7 +138,7 @@ def main2(pop=None, n_gen=N_GEN, verbose=True):
             print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values))
             eval = SolutionEvaluer()
             eval.plot(best_ind)
-    return pop, log
+    return pop, log, hof
 
 
 def parallel_evolution():
@@ -149,12 +147,13 @@ def parallel_evolution():
 
     NISLES = 4
     islands = [toolbox.population(n=300) for i in range(NISLES)]
-    migration_interval = 5
-    generations = 50
+    migration_interval = 2
+    generations = 4
     with Parallel(n_jobs=4) as parallel:
+        hof = None
         for i in range(0, generations, migration_interval):
-            res = parallel(delayed(main2)(island,migration_interval, False) for island in islands)
-            islands = [pop for pop, logbook in res]
+            res = parallel(delayed(main2)(island,migration_interval, hof, False) for island in islands)
+            islands = [pop for pop, logbook, hof in res]
             tools.migRing(islands, int(POP_SIZE/10), tools.selBest)
 
     for island in islands:
