@@ -1,6 +1,8 @@
+import datetime
 import math
 import time
 from multiprocessing import freeze_support
+from statistics import stdev
 
 import numpy
 import random
@@ -12,8 +14,11 @@ from deap import algorithms
 
 
 from joblib import Parallel, delayed
+import os
 
 import networkx as nx
+
+import warnings
 
 from WirelessAccessPoint.solution_evaluer.solution_evaluer2 import SolutionEvaluer
 from WirelessAccessPoint.problem_definition.deap_alg_par import *
@@ -37,7 +42,7 @@ def eval_fitness_costs_coperture(individual):
         if nx.has_path(ap_graph, SOURCE_CABLE, index):
             to_eval.append(individual[index])
     #ret =  _coperture(to_eval), _AP_costs(to_eval, ap_graph), wire_costs(to_eval, ap_graph),
-    return _coperture(to_eval), _AP_costs(to_eval),wire_costs(individual,ap_graph)
+    return _coperture(to_eval), _AP_costs(to_eval), wire_costs(individual,ap_graph)
 ######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
 def _AP_costs(individual):
     apc = 0
@@ -77,6 +82,16 @@ def _coperture(individual):
                 found = True
             index += 1
     return covered / len(clients)
+
+def _signal_intensity(individual):
+    clients = CLIENTS
+    s_int = 0
+    for client in clients:
+        for ap in individual:
+            dist = math.sqrt((client[0] - ap[X]) ** 2 + (client[1] - ap[Y]) ** 2)
+            if dist < RADIUS[ap[AP_TYPE]]:
+                s_int += P/(4*math.pi*(dist**2))
+    return s_int/len(clients)
 ########################################################################################################################
 ##################### FUNZIONE CUSTOM DI MUTAZIONE  ####################################################################
 def mutate_individual(individual, mu=0.0, sigma=0.2, indpb=INDPB):
@@ -94,10 +109,90 @@ def mutate_individual(individual, mu=0.0, sigma=0.2, indpb=INDPB):
         if random.random() < indpb:
             individual[i][AP_TYPE] = random.randint(0, 1)
     return individual,
-
 ########################################################################################################################
+###################### STOP CONDITION ##################################################################################
+def stop_cond(islands,STOP_CONDITION = 0):
+    if STOP_CONDITION != 0:
+        cur_ind = [[] for el in WEIGHTS]
+        for island in islands:
+            best_ind = tools.selBest(island, 1)[0]
+            for i in range(len(WEIGHTS)):
+                cur_ind[i].append(best_ind.fitness.values[i])
+        #print("dev0: "+"{0:.3f}".format(stdev(cur_ind[0]))+"\tdev1: "+"{0:.3f}".format(stdev(cur_ind[1]))+"\tdev2: "+"{0:.3f}".format(stdev(cur_ind[2])))
+        for i in range(len(WEIGHTS)):
+            print("dev"+str(i)+":\t"+"{0:.3f}".format(stdev(cur_ind[i]))+"\t", end="\t")
+        if stdev(cur_ind[0]) < 0.05 and stdev(cur_ind[1]) < 10 and stdev(cur_ind[2]) < 100:
+            return True
 
-creator.create("Fitness", base.Fitness, weights=(1.0,-1.0, -1.0))
+    return False
+########################################################################################################################
+###################### OUTPUT FUNCTIONS##################################################################################
+def print_output(pop, it=None, n_ind=1):
+    print("############################### FINAL STATS ###################################")
+    if it is None:
+        it = N_GEN
+    best_inds = tools.selBest(pop, n_ind)
+    for best_ind in best_inds:
+        print("Best individual is:\n\t %s\n\t %s" % (best_ind, best_ind.fitness.values))
+        eval = SolutionEvaluer()
+        eval.plot(best_ind)
+        print("")
+
+def print_infos():
+    print("############################### SETTINGS ###################################")
+    print("Genetic Algorithm Parameters:")
+    print("Max gen: \t\t"+str(N_GEN))
+    print("Migrations Interval: \t"+str(MIGRATION_INTERVAL)+"\twith "+str(MIGRATION_PERC)+"% migrating individual")
+    print("N Islands:\t" + str(N_ISLES)+" with pop size:\t"+str(POP_SIZE))
+    print("INDPB:\t"+str(INDPB))
+    print("Tournament size:\t "+str(TOURNAMENT_SIZE))
+    print("CXPB:\t%s\tMUTPB:\t%s" % (CXPB, MUTPB))
+    print("#############################################################################")
+
+def print_ind(ind):
+    out = ""
+    out += X+":"+str(ind[X])+", "
+    out += Y+":"+str(ind[Y])+", "
+    out += AP_TYPE+":"+str(ind[AP_TYPE])+", "
+    out += WIRE+":"+str(ind[WIRE])+"\n"
+    return out
+
+def save_results(path, pop):
+    run_id = time.time()
+    if not os.path.exists(path+str(run_id)):
+        os.makedirs(path+str(run_id))
+    path = path+str(run_id)+"/"
+    f = open(path+str(run_id)+".txt",'w')
+    f.write("\n################################ SETTINGS ###################################")
+    f.write("\n#RUN ID: "+str(run_id))
+    f.write("\n#Genetic Algorithm Parameters:")
+    f.write("\n#Max gen: \t\t"+str(N_GEN))
+    f.write("\n#Migrations Interval: \t"+str(MIGRATION_INTERVAL)+"\twith "+str(MIGRATION_PERC)+"% migrating individual")
+    f.write("\n#N Islands:\t" + str(N_ISLES)+" with pop size:\t"+str(POP_SIZE))
+    f.write("\n#INDPB:\t"+str(INDPB))
+    f.write("\n#Tournament size:\t "+str(TOURNAMENT_SIZE))
+    f.write("\n#CXPB:\t%s\tMUTPB:\t%s" % (CXPB, MUTPB))
+    f.write("\n##############################################################################")
+    f.write("\nN_INDIVIDUALS:" + str(len(pop))+"\n")
+    i = 0
+
+    for individual in pop:
+        eval = SolutionEvaluer(path=path+"run"+str(run_id)+"_ind"+str(i)+".png")
+        f.write("IND:"+str(i)+"\n")
+        i += 1
+        f.write("#fitness: \t"+str(individual.fitness.values))
+        ap_graph = build_ap_graph(individual)
+        to_eval = []
+        for index in range(len(individual)):
+            if nx.has_path(ap_graph, SOURCE_CABLE, index):
+                to_eval.append(individual[index])
+        f.write("AP:"+str(len(to_eval))+"\n")
+        for ap in to_eval:
+            f.write(print_ind(ap))
+        eval.plot(individual, save=True)
+#########################################################################################################################
+
+creator.create("Fitness", base.Fitness, weights=WEIGHTS)
 creator.create("Individual", list, fitness=creator.Fitness)
 
 toolbox = base.Toolbox()
@@ -125,8 +220,11 @@ toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
 
 
 def main2(pop=None, n_gen=N_GEN, hof=None, verbose=True):
-    random.seed(64)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+
     if pop is None:
+        random.seed(64)
         pop = toolbox.population(n=POP_SIZE)
     if hof is None:
         hof = tools.ParetoFront()
@@ -141,47 +239,30 @@ def main2(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     if verbose:
         best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
-            #print("Best individual is %s, %s" % (best_ind, best_ind.fitness.values))
             print("Best individual fitness: \t"+str(best_ind.fitness.values))
-            #eval = SolutionEvaluer()
-            #eval.plot(best_ind)
     return pop, log, hof
 
 
-def stop_cond(islands,STOP_CONDITION = 0):
-    if STOP_CONDITION != 0:
-        for island in islands:
-            best_ind = tools.selBest(island, 1)[0]
-            for i in range(len(STOP_CONDITION)):
-                if best_ind.fitness.values[i] >= STOP_CONDITION[i]:
-                    return True
-    return False
-
 def parallel_evolution():
-
-    random.seed(64)
-
-    NISLES = 4
-    islands = [toolbox.population(n=300) for i in range(NISLES)]
-    migration_interval = 10
-    generations = 500
+    print_infos()
+    islands = [toolbox.population(n=POP_SIZE) for i in range(N_ISLES)]
     with Parallel(n_jobs=4) as parallel:
-        hof = None
+        hof = tools.ParetoFront()
         it = 0
-        while it == 0 or (it < generations and not stop_cond(islands,STOP_CONDITION)):
+        while it == 0 or (it < N_GEN and not stop_cond(islands,STOP_CONDITION)):
         #for i in range(0, generations, migration_interval):
-            res = parallel(delayed(main2)(island,migration_interval, hof, True) for island in islands)
-            islands = [pop for pop, logbook, hof in res]
-            tools.migRing(islands, int((POP_SIZE/100)*MIGRATION_PERC), tools.selBest)
-            it += migration_interval
-
-    for island in islands:
-        best_inds = tools.selBest(island, 1)
-        for best_ind in best_inds:
-            print("Best individual is:\n\t %s\n\t %s" % (best_ind, best_ind.fitness.values))
-            eval = SolutionEvaluer()
-            eval.plot(best_ind)
-            print("")
+            print("\nIteration: "+str(it))
+            res = parallel(delayed(main2)(pop=island, n_gen=MIGRATION_INTERVAL, hof=hof, verbose=True) for island in islands)
+            islands = []
+            for pop, logbook, hofi in res:
+                hof.update(pop)
+                islands.append(pop)
+            tools.migRing(islands, N_MIGRATION, tools.selBest, tools.selRandom)
+            it += MIGRATION_INTERVAL
+    #for island in islands:
+    #    print_output(island, it)
+    #print_output(hof, it,n_ind=N_ISLES)
+    return hof
 
 def multi_islands():
     random.seed(64)
@@ -210,8 +291,13 @@ def multi_islands():
     return islands
 
 if __name__ == "__main__":
+    random.seed(64)
+    pareto_bests=tools.HallOfFame(int(POP_SIZE/2))
     start = time.time()
-    #multi_islands()
-    parallel_evolution()
+    for i in range(N_IT):
+        pop = parallel_evolution()
+        pareto_bests.update(pop)
     stop = time.time()-start
+    print_output(pareto_bests,n_ind=2)
+    save_results(SAVE_PATH,  tools.selBest(pareto_bests, 10))
     print("Time: \t "+"{0:.4f}".format(stop))
