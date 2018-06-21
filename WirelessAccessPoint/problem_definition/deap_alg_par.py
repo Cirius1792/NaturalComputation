@@ -10,7 +10,7 @@ PATH_CLINETS = "../200clients.txt"
 SAVE_PATH = "./res/"
 SAVE_DATA = True
 PLOT_PATH = False
-N_JOBS = 3
+N_JOBS = 4
 #Costanti usate per modellare il problema:
 
 N_AP = 100
@@ -23,22 +23,23 @@ SOURCE_Y = 250.0
 AP_COST = [10, 15]
 WIRE_COST = 1
 P = 100.0
-#WEIGHTS = (1.0,-1.0, -1.0)
-WEIGHTS = (1.0,-1.0)
+WEIGHTS = (1.0,-1.0, -1.0)if SOL_TYPE == 0 else (1.0,-1.0)
+#WEIGHTS = (1.0,-1.0)
 ####################PARAMETRI ALGORITMO GENETICO########################################################################
-N_IT = 1
-N_GEN = 200
+N_IT = 2
+N_GEN = 1000
 POP_SIZE = 300
-MIGRATION_INTERVAL = 50
-MIGRATION_PERC = 2
-N_MIGRATION = int((POP_SIZE/100)*MIGRATION_PERC) if int((POP_SIZE/100)*MIGRATION_PERC) > 1 else 1
+MIGRATION_INTERVAL = 300
+MIGRATION_PERC = 1
+#N_MIGRATION = int((POP_SIZE/100)*MIGRATION_PERC) if int((POP_SIZE/100)*MIGRATION_PERC) > 1 else 1
+N_MIGRATION = 1
 #STOP_CONDITION = [1]
 STOP_CONDITION = 1
-INDPB = 0.07
-MU = 5.0
-SIGMA = 2.5
-TOURNAMENT_SIZE = 5
-N_ISLES = 1
+INDPB = 0.2
+MU = 2.0
+SIGMA = 1.5
+TOURNAMENT_SIZE = 2
+N_ISLES = 4
 
 # CXPB  is the probability with which two individuals
 #       are crossed

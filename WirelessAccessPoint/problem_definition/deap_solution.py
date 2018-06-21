@@ -19,10 +19,12 @@ import os
 import networkx as nx
 
 import warnings
+warnings.filterwarnings("ignore")
 
 from WirelessAccessPoint.solution_evaluer.solution_evaluer2 import SolutionEvaluer
 from WirelessAccessPoint.problem_definition.deap_alg_par import *
 ########################################################################################################################
+
 ######METODO PER LA CREAZIONE DI UN GENE ###############################################################################
 def rand_ap():
     x = random.uniform(UPPER_BOUND_GRID, LOWER_BOUND_GRID)
@@ -31,6 +33,7 @@ def rand_ap():
     ap_type = random.randint(0,1)
     return {X:x, Y:y, WIRE:cable, AP_TYPE:ap_type}
 ########################################################################################################################
+
 ######################  FITNESSS FUNCTION  ############################################################################
 def eval_fitness_costs_coperture(individual):
     #Utilizzo un grafo per modellare l'interconnessione fra gli ap. Successivamente il grafo verrà utilizzato per ricercare
@@ -41,9 +44,8 @@ def eval_fitness_costs_coperture(individual):
     for index in range(len(individual)):
         if nx.has_path(ap_graph, SOURCE_CABLE, index):
             to_eval.append(individual[index])
-    #ret =  _coperture(to_eval), _AP_costs(to_eval, ap_graph), wire_costs(to_eval, ap_graph),
-    #return _coperture(to_eval), _AP_costs(to_eval), wire_costs(individual,ap_graph)
-    return _coperture(to_eval), _AP_costs(to_eval)
+    return _coperture(to_eval), _AP_costs(to_eval), wire_costs(individual,ap_graph)
+    #return _coperture(to_eval), _AP_costs(to_eval)
 ######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
 def _AP_costs(individual):
     apc = 0
@@ -186,12 +188,13 @@ def save_results(path, pop):
         eval = SolutionEvaluer(path=path+"run"+str(run_id)+"_ind"+str(i)+".png")
         f.write("IND:"+str(i)+"\n")
         i += 1
-        f.write("#fitness: \t"+str(individual.fitness.values))
+        f.write("#fitness: \t"+str(individual.fitness.values)+"\n")
         ap_graph = build_ap_graph(individual)
-        to_eval = []
-        for index in range(len(individual)):
-            if nx.has_path(ap_graph, SOURCE_CABLE, index):
-                to_eval.append(individual[index])
+        to_eval = list(individual)
+        #to_eval = []
+        # for index in range(len(individual)):
+        #     if nx.has_path(ap_graph, SOURCE_CABLE, index):
+        #         to_eval.append(individual[index])
         f.write("AP:"+str(len(to_eval))+"\n")
         for ap in to_eval:
             f.write(print_ind(ap))
@@ -226,8 +229,6 @@ toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
 
 
 def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
 
     if pop is None:
         random.seed(64)
@@ -241,7 +242,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     stats.register("max", numpy.max, axis=0)
 
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
-                                   stats=stats, halloffame=hof, verbose=True)
+                                   stats=stats, halloffame=hof, verbose=False)
     if verbose:
         best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
@@ -298,15 +299,15 @@ def multi_islands():
 
 def parallel_main():
     random.seed(64)
-    pareto_bests=tools.HallOfFame(int(POP_SIZE))
+    best_ind=tools.HallOfFame(int(POP_SIZE))
     start = time.time()
     for i in range(N_IT):
         print("Iteration: "+str(i))
         pop = parallel_evolution()
-        pareto_bests.update(pop)
+        best_ind.update(pop)
     stop = time.time()-start
-    print_output(pareto_bests,n_ind=2)
-    save_results(SAVE_PATH,  tools.selBest(pareto_bests, 10)) if SAVE_DATA else 0
+    print_output(best_ind,n_ind=2)
+    save_results(SAVE_PATH,  tools.selBest(best_ind, 10)) if SAVE_DATA else 0
     print("Time: \t "+"{0:.4f}".format(stop))
 
 def single_main():
@@ -318,4 +319,5 @@ def single_main():
 
 
 if __name__ == "__main__":
-    single_main()
+    #single_main()
+    parallel_main()

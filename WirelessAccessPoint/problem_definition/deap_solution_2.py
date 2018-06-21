@@ -120,8 +120,8 @@ def stop_cond(islands,STOP_CONDITION = 0):
         for i in range(len(WEIGHTS)):
             print("dev"+str(i)+":\t"+"{0:.3f}".format(stdev(cur_ind[i]))+"\t", end="\t")
         print("")
-        if stdev(cur_ind[0]) < 0.05 and stdev(cur_ind[1]) < 10 and stdev(cur_ind[2]) < 100:
-            return True
+        #if stdev(cur_ind[0]) < 0.05 and stdev(cur_ind[1]) < 10 and stdev(cur_ind[2]) < 100:
+        #    return True
 
     return False
 ########################################################################################################################
@@ -234,7 +234,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     stats.register("max", numpy.max, axis=0)
 
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
-                                   stats=stats, halloffame=hof, verbose=True)
+                                   stats=stats, halloffame=hof, verbose=False)
     if verbose:
         best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
@@ -291,15 +291,15 @@ def multi_islands():
 
 def parallel_main():
     random.seed(64)
-    pareto_bests=tools.HallOfFame(int(POP_SIZE))
+    best_inds=tools.HallOfFame(int(POP_SIZE))
     start = time.time()
     for i in range(N_IT):
         print("Iteration: "+str(i))
         pop = parallel_evolution()
-        pareto_bests.update(pop)
+        best_inds.update(pop)
     stop = time.time()-start
-    print_output(pareto_bests,n_ind=2)
-    save_results(SAVE_PATH,  tools.selBest(pareto_bests, 10)) if SAVE_DATA else 0
+    print_output(best_inds,n_ind=2)
+    save_results(SAVE_PATH,  tools.selBest(best_inds, 10)) if SAVE_DATA else 0
     print("Time: \t "+"{0:.4f}".format(stop))
 
 def single_main():
@@ -311,4 +311,5 @@ def single_main():
 
 
 if __name__ == "__main__":
-    single_main()
+    #single_main()
+    parallel_main()
