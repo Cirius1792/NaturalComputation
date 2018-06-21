@@ -1,5 +1,6 @@
 import networkx as nx
 ######COSTANTI DI AMBIENTE
+SOL_TYPE = 0
 X = 'x'
 Y = 'y'
 WIRE = 'wire'
@@ -7,6 +8,9 @@ AP_TYPE = 'type'
 PATH_CLINETS = "../200clients.txt"
 #PATH_CLINETS = "../400clients.txt"
 SAVE_PATH = "./res/"
+SAVE_DATA = True
+PLOT_PATH = False
+N_JOBS = 3
 #Costanti usate per modellare il problema:
 
 N_AP = 100
@@ -15,32 +19,32 @@ UPPER_BOUND_GRID = 500.0
 LOWER_BOUND_GRID = -500.0
 RADIUS = [50, 75]
 SOURCE_X = -250.0
-SOURCE_Y =250.0
+SOURCE_Y = 250.0
 AP_COST = [10, 15]
 WIRE_COST = 1
 P = 100.0
-WEIGHTS = (1.0,-1.0, -1.0)
-#WEIGHTS = (1.0,-1.0)
+#WEIGHTS = (1.0,-1.0, -1.0)
+WEIGHTS = (1.0,-1.0)
 ####################PARAMETRI ALGORITMO GENETICO########################################################################
-N_IT = 4
-N_GEN = 30
-POP_SIZE = 10
-MIGRATION_INTERVAL = 10
+N_IT = 1
+N_GEN = 200
+POP_SIZE = 300
+MIGRATION_INTERVAL = 50
 MIGRATION_PERC = 2
-N_MIGRATION =  int((POP_SIZE/100)*MIGRATION_PERC) if int((POP_SIZE/100)*MIGRATION_PERC) > 1 else 1
+N_MIGRATION = int((POP_SIZE/100)*MIGRATION_PERC) if int((POP_SIZE/100)*MIGRATION_PERC) > 1 else 1
 #STOP_CONDITION = [1]
 STOP_CONDITION = 1
 INDPB = 0.07
-MU = 5
-SIGMA = 2
-TOURNAMENT_SIZE = 3
-N_ISLES = 4
+MU = 5.0
+SIGMA = 2.5
+TOURNAMENT_SIZE = 5
+N_ISLES = 1
 
 # CXPB  is the probability with which two individuals
 #       are crossed
 #
 # MUTPB is the probability for mutating an individual
-CXPB, MUTPB = 0.5, 0.2
+CXPB, MUTPB = 0.5, 0.25
 
 ######################UTILITY###########################################################################################
 def load_clients(path):

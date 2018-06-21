@@ -27,8 +27,8 @@ from WirelessAccessPoint.problem_definition.deap_alg_par import *
 def rand_ap():
     x = random.uniform(UPPER_BOUND_GRID, LOWER_BOUND_GRID)
     y = random.uniform(UPPER_BOUND_GRID, LOWER_BOUND_GRID)
-    cable = random.randint(-1, N_AP+1)
-    ap_type = random.randint(0,1)
+    cable = random.randint(0, 1)
+    ap_type = random.randint(0, 1)
     return {X:x, Y:y, WIRE:cable, AP_TYPE:ap_type}
 ########################################################################################################################
 ######################  FITNESSS FUNCTION  ############################################################################
@@ -36,13 +36,10 @@ def eval_fitness_costs_coperture(individual):
     #Utilizzo un grafo per modellare l'interconnessione fra gli ap. Successivamente il grafo verrà utilizzato per ricercare
     #un percorso fra ogni ap e la Sorgente del segnale, se un path non esiste l'ap non viene considerato per la valutazione
     #della fitnes, risultando scollegato dalla rete
-    ap_graph = build_ap_graph(individual)
     to_eval = []
     for index in range(len(individual)):
-        if nx.has_path(ap_graph, SOURCE_CABLE, index):
+        if individual[index][WIRE] == 1:
             to_eval.append(individual[index])
-    #ret =  _coperture(to_eval), _AP_costs(to_eval, ap_graph), wire_costs(to_eval, ap_graph),
-    #return _coperture(to_eval), _AP_costs(to_eval), wire_costs(individual,ap_graph)
     return _coperture(to_eval), _AP_costs(to_eval)
 ######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
 def _AP_costs(individual):
@@ -105,11 +102,7 @@ def mutate_individual(individual, mu=0.0, sigma=0.2, indpb=INDPB):
             individual[i][Y] += random.gauss(mu, sigma)
         #Muto WIRE
         if random.random() < indpb:
-            #individual[i][WIRE] = random.randint(-1, N_AP+1)
-            if individual[i][WIRE] >= 0  and individual[i][WIRE] <= N_AP-1:
-                individual[i][WIRE] = individual[individual[i][WIRE]][WIRE]
-            else:
-                individual[i][WIRE] = random.randint(-1, N_AP + 1)
+            individual[i][WIRE] = abs(1 - individual[i][WIRE])
         #Muto AP_TYPE
         if random.random() < indpb:
             individual[i][AP_TYPE] = abs(1 - individual[i][AP_TYPE])
@@ -215,7 +208,7 @@ toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 toolbox.register("evaluate", eval_fitness_costs_coperture)
 
 # register the crossover operator
-toolbox.register("mate", tools.cxUniform, indpb=INDPB)
+toolbox.register("mate", tools.cxTwoPoint)
 
 toolbox.register("mutate", mutate_individual, mu=MU, sigma=SIGMA, indpb=INDPB)
 toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
@@ -233,7 +226,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
         random.seed(64)
         pop = toolbox.population(n=POP_SIZE)
     if hof is None:
-        hof = tools.ParetoFront()
+        hof = tools.HallOfFame(POP_SIZE/5)
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", numpy.mean, axis=0)
     stats.register("std", numpy.std, axis=0)

@@ -14,11 +14,16 @@ class SolutionEvaluer:
         self._path = path
 
     def _prepare_solution(self, sol):
-        ap_graph = build_ap_graph(sol)
-        to_eval=[]
-        for index in range(len(sol)):
-            if nx.has_path(ap_graph, SOURCE_CABLE, index):
-                to_eval.append(sol[index])
+        to_eval = []
+        if SOL_TYPE == 1:
+            ap_graph = build_ap_graph(sol)
+            for index in range(len(sol)):
+                if nx.has_path(ap_graph, SOURCE_CABLE, index):
+                    to_eval.append(sol[index])
+        else:
+            for index in range(len(sol)):
+                if sol[index][WIRE] == 1:
+                    to_eval.append(sol[index])
         return to_eval
 
     def plot(self, sol, save=False):
@@ -41,7 +46,7 @@ class SolutionEvaluer:
             apt[ap[AP_TYPE]] += 1
             x,y = ap[X],ap[Y]
             dst = sol[ap[WIRE]] if ap[WIRE] != N_AP+1 else {X:SOURCE_X, Y:SOURCE_Y}
-            plt.plot([x,dst[X]], [y, dst[Y]], lw=0.5, C='gray')
+            plt.plot([x,dst[X]], [y, dst[Y]], lw=0.5, C='gray') if SOL_TYPE == 0 else 0
             circle = plt.Circle((x, y), RADIUS[ap[AP_TYPE]], color='green', alpha=0.3)
             plt.gcf().gca().add_artist(circle)
         plt.title("Covered "+str(covered)+" AP1: "+str(apt[0])+" AP2: "+str(apt[1]))
