@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69469322-6087-4e0a-97f5-39af678ad3fb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AccessPointNC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AccessPointNC.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -348,16 +342,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41721132" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.20646067" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13326226" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.41721132" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.20588236" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13326226" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.32569295" />
