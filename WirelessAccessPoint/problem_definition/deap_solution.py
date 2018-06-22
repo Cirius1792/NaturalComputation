@@ -97,22 +97,22 @@ def _signal_intensity(individual):
     return s_int/len(clients)
 ########################################################################################################################
 ##################### FUNZIONE CUSTOM DI MUTAZIONE  ####################################################################
-def mutate_individual(individual, mu=0.0, sigma=0.2, indpb=INDPB):
+def mutate_individual(individual, mu=0.0, sigma=1, indpb=INDPB):
     for i in range(len(individual)):
-        #Muto X
+        #Mutate X
         if random.random() < indpb:
             individual[i][X] += random.gauss(mu, sigma)
-        #Muto Y
+        #Mutate Y
         if random.random() < indpb:
             individual[i][Y] += random.gauss(mu, sigma)
-        #Muto WIRE
+        #Mutate WIRE
         if random.random() < indpb:
-            #individual[i][WIRE] = random.randint(-1, N_AP+1)
-            if individual[i][WIRE] >= 0  and individual[i][WIRE] <= N_AP-1:
-                individual[i][WIRE] = individual[individual[i][WIRE]][WIRE]
-            else:
-                individual[i][WIRE] = random.randint(-1, N_AP + 1)
-        #Muto AP_TYPE
+            individual[i][WIRE] = random.randint(-1, N_AP)
+            # if individual[i][WIRE] >= 0  and individual[i][WIRE] <= N_AP-1:
+            #     individual[i][WIRE] = individual[individual[i][WIRE]][WIRE]
+            # else:
+            #     individual[i][WIRE] = random.randint(-1, N_AP + 1)
+        #Mutate AP_TYPE
         if random.random() < indpb:
             individual[i][AP_TYPE] = abs(1 - individual[i][AP_TYPE])
     return individual,

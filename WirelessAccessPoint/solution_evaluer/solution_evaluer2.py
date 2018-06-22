@@ -29,6 +29,7 @@ class SolutionEvaluer:
     def plot(self, sol, save=False):
         aps = self._prepare_solution(sol)
         covered = 0
+        plt.rcParams["figure.figsize"] = (10, 10)
         plt.plot(SOURCE_X, SOURCE_Y, 'bo')
         for c in self._clients:
             plt.plot(c[0], c[1], 'or')

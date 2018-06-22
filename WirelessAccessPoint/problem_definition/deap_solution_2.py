@@ -16,8 +16,8 @@ from deap import algorithms
 from joblib import Parallel, delayed
 import os
 
-import networkx as nx
-
+import matplotlib.pyplot as plt
+import networkx
 import warnings
 
 from WirelessAccessPoint.solution_evaluer.solution_evaluer2 import SolutionEvaluer
@@ -213,7 +213,11 @@ toolbox.register("mate", tools.cxTwoPoint)
 toolbox.register("mutate", mutate_individual, mu=MU, sigma=SIGMA, indpb=INDPB)
 toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
 
+history = tools.History()
 
+# Decorate the variation operators
+toolbox.decorate("mate", history.decorator)
+toolbox.decorate("mutate", history.decorator)
 
 # ----------
 
@@ -227,6 +231,9 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
         pop = toolbox.population(n=POP_SIZE)
     if hof is None:
         hof = tools.HallOfFame(POP_SIZE/5)
+
+    history.update(pop)
+
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", numpy.mean, axis=0)
     stats.register("std", numpy.std, axis=0)
@@ -308,8 +315,17 @@ def single_main():
     stop = time.time()-start
     print_output(hof, n_ind=5)
     print("Time: \t "+"{0:.4f}".format(stop))
+    print("preparing history")
+    graph = networkx.DiGraph(history.genealogy_tree)
+    graph = graph.reverse()  # Make the grah top-down
+    colors = [toolbox.evaluate(history.genealogy_history[i])[0] for i in graph]
+    networkx.draw(graph, node_color=colors)
+    plt.show()
+    #save_results(SAVE_PATH,  tools.selBest(hof, 10)) if SAVE_DATA else 0
 
 
 if __name__ == "__main__":
-    #single_main()
-    parallel_main()
+    if N_ISLES > 1:
+        parallel_main()
+    else:
+        single_main()
