@@ -107,11 +107,11 @@ def mutate_individual(individual, mu=0.0, sigma=1, indpb=INDPB):
             individual[i][Y] += random.gauss(mu, sigma)
         #Mutate WIRE
         if random.random() < indpb:
-            #individual[i][WIRE] = random.randint(-1, N_AP)
-            if individual[i][WIRE] >= 0  and individual[i][WIRE] <= N_AP-1:
-                individual[i][WIRE] = individual[individual[i][WIRE]][WIRE]
-            else:
-                individual[i][WIRE] = random.randint(-1, N_AP + 1)
+            individual[i][WIRE] = random.randint(-1, N_AP)
+            # if individual[i][WIRE] >= 0  and individual[i][WIRE] <= N_AP-1:
+            #     individual[i][WIRE] = individual[individual[i][WIRE]][WIRE]
+            # else:
+            #     individual[i][WIRE] = random.randint(-1, N_AP + 1)
         #Mutate AP_TYPE
         if random.random() < indpb:
             individual[i][AP_TYPE] = abs(1 - individual[i][AP_TYPE])
@@ -288,7 +288,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     stats.register("max", numpy.max, axis=0)
 
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
-                                   stats=stats, halloffame=hof, verbose=False)
+                                   stats=stats, halloffame=hof, verbose=True)
     if verbose:
         best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
@@ -361,10 +361,12 @@ def single_main():
     pop,log,hof = single_evolver(verbose=False)
     fig = plot_stats(log)
     stop = time.time()-start
-    #print_output(hof, n_ind=5)
+    print_output(hof, n_ind=10)
+    save_results(SAVE_PATH,  tools.selBest(hof, 10)) if SAVE_DATA else 0
+
     print("Time: \t "+"{0:.4f}".format(stop))
 
 
 if __name__ == "__main__":
-    #single_main()
-    parallel_main()
+    single_main()
+    #parallel_main()

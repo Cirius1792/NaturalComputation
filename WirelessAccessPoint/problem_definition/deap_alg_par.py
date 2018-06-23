@@ -1,6 +1,6 @@
 import networkx as nx
 ######COSTANTI DI AMBIENTE
-SOL_TYPE = 0
+SOL_TYPE = 1
 X = 'x'
 Y = 'y'
 WIRE = 'wire'
@@ -39,7 +39,7 @@ INDPB = 0.2
 MU = 0
 SIGMA = 5
 TOURNAMENT_SIZE = 2
-N_ISLES = 4
+N_ISLES = 1
 
 # CXPB  is the probability with which two individuals
 #       are crossed

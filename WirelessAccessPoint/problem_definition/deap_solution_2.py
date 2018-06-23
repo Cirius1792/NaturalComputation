@@ -126,7 +126,7 @@ def stop_cond(islands,STOP_CONDITION = 0):
 ########################################################################################################################
 ###################### OUTPUT FUNCTIONS#################################################################################
 
-def plot_stats(logbook):
+def plot_stats(logbook, title=""):
     min_labels = ["min coperture", "min ap cost"]
     max_labels = ["max coperture", "max ap cost"]
     min_col= ["c-", "b-"]
@@ -160,7 +160,7 @@ def plot_stats(logbook):
     lns = line1 + line3
     labs = [l.get_label() for l in lns]
     ax1.legend(lns, labs, loc='upper left')
-
+    plt.title(title)
     plt.show()
     return fig
 
@@ -277,7 +277,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     stats.register("max", numpy.max, axis=0)
 
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
-                                   stats=stats, halloffame=hof, verbose=False)
+                                   stats=stats, halloffame=hof, verbose=True)
     if verbose:
         best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
@@ -355,15 +355,27 @@ def single_main():
         print("Iteration: "+str(i))
         pop,log,hof = single_evolver(verbose=False)
         best_inds.update(pop)
-        save_results(SAVE_PATH, tools.selBest(hof, 10), log) if SAVE_DATA else 0
+        #save_results(SAVE_PATH, tools.selBest(hof, 10), log) if SAVE_DATA else 0
     stop = time.time()-start
     print_output(best_inds, n_ind=5)
     print("Time: \t "+"{0:.4f}".format(stop))
-    print("preparing history")
+    return log
 
+def test_iperpar():
+    cx = [0.5, 0.45, 0.40, 0.35,0.30]
+    mu = [0.40, 0.35,0.30, 0.25, 0.20]
+    N_GEN = 100
+    for c in cx:
+        CXPB = c
+        for m in mu:
+            MUTPB = m
+            log = single_main()
+            title = "cx" + str(CXPB) + "_mu" + str(MUTPB) + ".png"
+            plot_stats(log, title)
 
 if __name__ == "__main__":
-    if N_ISLES > 1:
-        parallel_main()
-    else:
-        single_main()
+    test_iperpar()
+    # if N_ISLES > 1:
+    #     parallel_main()
+    # else:
+    #     single_main()
