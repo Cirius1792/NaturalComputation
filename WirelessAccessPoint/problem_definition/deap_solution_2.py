@@ -1,7 +1,7 @@
 import datetime
 import math
 import time
-from multiprocessing import freeze_support
+import matplotlib.pyplot as plt
 from statistics import stdev
 
 import numpy
@@ -17,7 +17,6 @@ from joblib import Parallel, delayed
 import os
 
 import matplotlib.pyplot as plt
-import networkx
 import warnings
 
 from WirelessAccessPoint.solution_evaluer.solution_evaluer2 import SolutionEvaluer
@@ -126,6 +125,45 @@ def stop_cond(islands,STOP_CONDITION = 0):
     return False
 ########################################################################################################################
 ###################### OUTPUT FUNCTIONS#################################################################################
+
+def plot_stats(logbook):
+    min_labels = ["min coperture", "min ap cost"]
+    max_labels = ["max coperture", "max ap cost"]
+    min_col= ["c-", "b-"]
+    max_col= ["k-", "r-"]
+    gen = logbook.select("gen")
+    fit_mins = logbook.select("min")
+    fit_max = logbook.select("max")
+
+    fig, ax1 = plt.subplots()
+    #COPERTURE
+    # to_plot = [fit_mins[j][0] for j in range(len(fit_mins))]
+    # line0 = ax1.plot(gen, to_plot, min_col[0], label=min_labels[0])
+    to_plot = [fit_max[j][0] for j in range(len(fit_mins))]
+    line3 = ax1.plot(gen, to_plot, max_col[1], label=max_labels[0])
+
+    ax1.set_xlabel("Generation")
+    ax1.set_ylabel("Coperture", color="r")
+    for tl in ax1.get_yticklabels():
+        tl.set_color("r")
+
+    #AP_COSTS
+    ax2 = ax1.twinx()
+    to_plot = [fit_mins[j][1] for j in range(len(fit_mins))]
+    line1 = ax2.plot(gen, to_plot, min_col[1], label=min_labels[1])
+    # to_plot = [fit_max[j][1] for j in range(len(fit_mins))]
+    # line2 = ax2.plot(gen, to_plot, max_col[0], label=max_labels[1])
+    ax2.set_ylabel("Cost", color="b")
+    for tl in ax2.get_yticklabels():
+        tl.set_color("b")
+
+    lns = line1 + line3
+    labs = [l.get_label() for l in lns]
+    ax1.legend(lns, labs, loc='upper left')
+
+    plt.show()
+    return fig
+
 def print_output(pop, it=None, n_ind=1):
     print("############################### FINAL STATS ###################################")
     if it is None:
@@ -156,11 +194,17 @@ def print_ind(ind):
     out += WIRE+":"+str(ind[WIRE])+"\n"
     return out
 
-def save_results(path, pop):
+def save_results(path, pop, log=None):
     run_id = time.time()
     if not os.path.exists(path+str(run_id)):
         os.makedirs(path+str(run_id))
     path = path+str(run_id)+"/"
+    if log:
+        fig = plot_stats(log)
+        fig.savefig(path+"cx" + str(CXPB) + "_mu" + str(MUTPB) + ".png")
+        f = open(path+"cx" + str(CXPB) + "_mu" + str(MUTPB) + ".txt", 'w')
+        f.write(str(log))
+        f.close()
     f = open(path+str(run_id)+".txt",'w')
     f.write("\n################################ SETTINGS ###################################")
     f.write("\n#RUN ID: "+str(run_id))
@@ -213,12 +257,6 @@ toolbox.register("mate", tools.cxTwoPoint)
 toolbox.register("mutate", mutate_individual, mu=MU, sigma=SIGMA, indpb=INDPB)
 toolbox.register("select", tools.selTournament, tournsize=TOURNAMENT_SIZE)
 
-history = tools.History()
-
-# Decorate the variation operators
-toolbox.decorate("mate", history.decorator)
-toolbox.decorate("mutate", history.decorator)
-
 # ----------
 
 
@@ -231,8 +269,6 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
         pop = toolbox.population(n=POP_SIZE)
     if hof is None:
         hof = tools.HallOfFame(POP_SIZE/5)
-
-    history.update(pop)
 
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", numpy.mean, axis=0)
@@ -296,6 +332,8 @@ def multi_islands():
             print("")
     return islands
 
+
+
 def parallel_main():
     random.seed(64)
     best_inds=tools.HallOfFame(int(POP_SIZE))
@@ -311,17 +349,17 @@ def parallel_main():
 
 def single_main():
     start = time.time()
-    pop,log,hof = single_evolver()
+    best_inds = tools.HallOfFame(int(POP_SIZE))
+    #best_inds = tools.ParetoFront()
+    for i in range(N_IT):
+        print("Iteration: "+str(i))
+        pop,log,hof = single_evolver(verbose=False)
+        best_inds.update(pop)
+        save_results(SAVE_PATH, tools.selBest(hof, 10), log) if SAVE_DATA else 0
     stop = time.time()-start
-    print_output(hof, n_ind=5)
+    print_output(best_inds, n_ind=5)
     print("Time: \t "+"{0:.4f}".format(stop))
     print("preparing history")
-    graph = networkx.DiGraph(history.genealogy_tree)
-    graph = graph.reverse()  # Make the grah top-down
-    colors = [toolbox.evaluate(history.genealogy_history[i])[0] for i in graph]
-    networkx.draw(graph, node_color=colors)
-    plt.show()
-    #save_results(SAVE_PATH,  tools.selBest(hof, 10)) if SAVE_DATA else 0
 
 
 if __name__ == "__main__":

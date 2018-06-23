@@ -1,6 +1,6 @@
 import networkx as nx
 ######COSTANTI DI AMBIENTE
-SOL_TYPE = 1
+SOL_TYPE = 0
 X = 'x'
 Y = 'y'
 WIRE = 'wire'
@@ -26,8 +26,8 @@ P = 100.0
 WEIGHTS = (1.0,-1.0, -1.0)if SOL_TYPE == 0 else (1.0,-1.0)
 #WEIGHTS = (1.0,-1.0)
 ####################PARAMETRI ALGORITMO GENETICO########################################################################
-N_IT = 1
-N_GEN = 200
+N_IT = 2
+N_GEN = 900
 POP_SIZE = 300
 MIGRATION_INTERVAL = 300
 MIGRATION_PERC = 1
@@ -39,13 +39,13 @@ INDPB = 0.2
 MU = 0
 SIGMA = 5
 TOURNAMENT_SIZE = 2
-N_ISLES = 1
+N_ISLES = 4
 
 # CXPB  is the probability with which two individuals
 #       are crossed
 #
 # MUTPB is the probability for mutating an individual
-CXPB, MUTPB = 0.5, 0.25
+CXPB, MUTPB = 0.35, 0.35
 
 ######################UTILITY###########################################################################################
 def load_clients(path):
