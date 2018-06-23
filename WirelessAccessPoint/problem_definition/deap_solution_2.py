@@ -39,7 +39,13 @@ def eval_fitness_costs_coperture(individual):
     for index in range(len(individual)):
         if individual[index][WIRE] == 1:
             to_eval.append(individual[index])
-    return _coperture(to_eval), _AP_costs(to_eval)
+    if SOL_TYPE == 1:
+        ret = _coperture(to_eval), _AP_costs(to_eval)
+    elif SOL_TYPE == 2:
+        ret = _coperture(to_eval), _AP_costs(to_eval), _signal_intensity(individual)
+    else:
+        return None
+    return ret
 ######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
 def _AP_costs(individual):
     apc = 0
@@ -83,11 +89,16 @@ def _coperture(individual):
 def _signal_intensity(individual):
     clients = CLIENTS
     s_int = 0
+    nearest_ap = None
     for client in clients:
+        nearest_ap = None
         for ap in individual:
             dist = math.sqrt((client[0] - ap[X]) ** 2 + (client[1] - ap[Y]) ** 2)
             if dist < RADIUS[ap[AP_TYPE]]:
-                s_int += P/(4*math.pi*(dist**2))
+                if nearest_ap is None or nearest_ap[1] > dist:
+                    nearest_ap = (ap, dist)
+        if nearest_ap is not None:
+            s_int += P[nearest_ap[0][AP_TYPE]]/(4*math.pi*(nearest_ap[1]**2))
     return s_int/len(clients)
 ########################################################################################################################
 ##################### FUNZIONE CUSTOM DI MUTAZIONE  ####################################################################
@@ -277,7 +288,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     stats.register("max", numpy.max, axis=0)
 
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
-                                   stats=stats, halloffame=hof, verbose=True)
+                                   stats=stats, halloffame=hof, verbose=False)
     if verbose:
         best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
@@ -306,37 +317,13 @@ def parallel_evolution():
     #print_output(hof, it,n_ind=N_ISLES)
     return hof
 
-def multi_islands():
-    random.seed(64)
-    NISLES = 6
-    islands = [toolbox.population(n=300) for i in range(NISLES)]
-    # Unregister unpicklable methods before sending the toolbox.
-    toolbox.unregister("attr_AP")
-    toolbox.unregister("individual")
-    toolbox.unregister("population")
-
-    NGEN, FREQ = 50, 5
-    toolbox.register("algorithm", algorithms.eaSimple, toolbox=toolbox,
-                     cxpb=0.5, mutpb=0.2, ngen=FREQ, verbose=False)
-    for i in range(0, NGEN, FREQ):
-        results = toolbox.map(toolbox.algorithm, islands)
-        islands = [pop for pop, logbook in results]
-        tools.migRing(islands, 15, tools.selBest)
-
-    for island in islands:
-        best_inds = tools.selBest(island, 1)
-        for best_ind in best_inds:
-            print("Best individual is:\n\t %s\n\t %s" % (best_ind, best_ind.fitness.values))
-            eval = SolutionEvaluer()
-            eval.plot(best_ind)
-            print("")
-    return islands
 
 
 
 def parallel_main():
     random.seed(64)
-    best_inds=tools.HallOfFame(int(POP_SIZE))
+    best_inds=tools.HallOfFame(25)
+    #best_inds = tools.ParetoFront()
     start = time.time()
     for i in range(N_IT):
         print("Iteration: "+str(i))
@@ -344,7 +331,7 @@ def parallel_main():
         best_inds.update(pop)
     stop = time.time()-start
     print_output(best_inds,n_ind=2)
-    save_results(SAVE_PATH,  tools.selBest(best_inds, 10)) if SAVE_DATA else 0
+    save_results(SAVE_PATH,  best_inds) if SAVE_DATA else 0
     print("Time: \t "+"{0:.4f}".format(stop))
 
 def single_main():
@@ -355,7 +342,7 @@ def single_main():
         print("Iteration: "+str(i))
         pop,log,hof = single_evolver(verbose=False)
         best_inds.update(pop)
-        #save_results(SAVE_PATH, tools.selBest(hof, 10), log) if SAVE_DATA else 0
+        save_results(SAVE_PATH, tools.selBest(hof, 10), log) if SAVE_DATA else 0
     stop = time.time()-start
     print_output(best_inds, n_ind=5)
     print("Time: \t "+"{0:.4f}".format(stop))
@@ -374,8 +361,8 @@ def test_iperpar():
             plot_stats(log, title)
 
 if __name__ == "__main__":
-    test_iperpar()
-    # if N_ISLES > 1:
-    #     parallel_main()
-    # else:
-    #     single_main()
+    #test_iperpar()
+    if N_ISLES > 1:
+        parallel_main()
+    else:
+        single_main()

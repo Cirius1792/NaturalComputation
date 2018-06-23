@@ -107,7 +107,7 @@ def mutate_individual(individual, mu=0.0, sigma=1, indpb=INDPB):
             individual[i][Y] += random.gauss(mu, sigma)
         #Mutate WIRE
         if random.random() < indpb:
-            individual[i][WIRE] = random.randint(-1, N_AP)
+            individual[i][WIRE] = random.randint(-N_AP, N_AP)
             # if individual[i][WIRE] >= 0  and individual[i][WIRE] <= N_AP-1:
             #     individual[i][WIRE] = individual[individual[i][WIRE]][WIRE]
             # else:
@@ -129,8 +129,6 @@ def stop_cond(islands,STOP_CONDITION = 0):
         for i in range(len(WEIGHTS)):
             print("dev"+str(i)+":\t"+"{0:.3f}".format(stdev(cur_ind[i]))+"\t", end="\t")
         print("")
-        if stdev(cur_ind[0]) < 0.05 and stdev(cur_ind[1]) < 10 and stdev(cur_ind[2]) < 100:
-            return True
 
     return False
 ########################################################################################################################
@@ -280,7 +278,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
         random.seed(64)
         pop = toolbox.population(n=POP_SIZE)
     if hof is None:
-        hof = tools.ParetoFront()
+        hof = tools.HallOfFame(POP_SIZE)
     stats = tools.Statistics(lambda ind: ind.fitness.values)
     stats.register("avg", numpy.mean, axis=0)
     stats.register("std", numpy.std, axis=0)
@@ -346,6 +344,7 @@ def multi_islands():
 def parallel_main():
     random.seed(64)
     best_ind=tools.HallOfFame(int(POP_SIZE))
+    #best_ind = tools.ParetoFront()
     start = time.time()
     for i in range(N_IT):
         print("Iteration: "+str(i))
@@ -353,7 +352,7 @@ def parallel_main():
         best_ind.update(pop)
     stop = time.time()-start
     print_output(best_ind,n_ind=5)
-    save_results(SAVE_PATH,  tools.selBest(best_ind, 10)) if SAVE_DATA else 0
+    save_results(SAVE_PATH,  tools.selBest(best_ind, 20)) if SAVE_DATA else 0
     print("Time: \t "+"{0:.4f}".format(stop))
 
 def single_main():
