@@ -1,13 +1,13 @@
 import networkx as nx
 ######COSTANTI DI AMBIENTE
-SOL_TYPE = 2
+SOL_TYPE = 0
 X = 'x'
 Y = 'y'
 WIRE = 'wire'
 AP_TYPE = 'type'
-PATH_CLINETS = "../200clients.txt"
-#PATH_CLINETS = "../400clients.txt"
-SAVE_PATH = "./res/"
+#PATH_CLINETS = "../200clients.txt"
+PATH_CLINETS = "../400clients.txt"
+SAVE_PATH = "./res400/"
 SAVE_DATA = True
 PLOT_PATH = False
 N_JOBS = 4
@@ -22,7 +22,7 @@ SOURCE_X = -250.0
 SOURCE_Y = 250.0
 AP_COST = [10, 15]
 WIRE_COST = 1
-P1 = 100.0
+P1 = 1000.0
 P2 = 2.25*P1
 P = [P1, P2]
 if SOL_TYPE == 0:

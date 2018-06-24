@@ -286,7 +286,7 @@ def single_evolver(pop=None, n_gen=N_GEN, hof=None, verbose=True):
     stats.register("max", numpy.max, axis=0)
 
     pop, log = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=n_gen,
-                                   stats=stats, halloffame=hof, verbose=True)
+                                   stats=stats, halloffame=hof, verbose=False)
     if verbose:
         best_inds = tools.selBest(hof, 1)
         for best_ind in best_inds:
@@ -367,5 +367,5 @@ def single_main():
 
 
 if __name__ == "__main__":
-    single_main()
-    #parallel_main()
+    #single_main()
+    parallel_main()
