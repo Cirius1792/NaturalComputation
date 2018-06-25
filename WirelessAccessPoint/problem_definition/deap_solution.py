@@ -44,7 +44,11 @@ def eval_fitness_costs_coperture(individual):
     for index in range(len(individual)):
         if nx.has_path(ap_graph, SOURCE_CABLE, index):
             to_eval.append(individual[index])
-    return _coperture(to_eval), _AP_costs(to_eval), wire_costs(individual,ap_graph)
+    if SOL_TYPE == 0:
+        ret = _coperture(to_eval), _AP_costs(to_eval), wire_costs(individual,ap_graph)
+    elif SOL_TYPE == 3:
+        ret = _coperture(to_eval), _AP_costs(to_eval), wire_costs(individual,ap_graph), _signal_intensity(to_eval)
+    return ret
     #return _coperture(to_eval), _AP_costs(to_eval)
 ######################  FUNZIONI DI APPOGGIO PER LA FITNESS  ###########################################################
 def _AP_costs(individual):
@@ -89,11 +93,16 @@ def _coperture(individual):
 def _signal_intensity(individual):
     clients = CLIENTS
     s_int = 0
+    nearest_ap = None
     for client in clients:
+        nearest_ap = None
         for ap in individual:
             dist = math.sqrt((client[0] - ap[X]) ** 2 + (client[1] - ap[Y]) ** 2)
             if dist < RADIUS[ap[AP_TYPE]]:
-                s_int += P/(4*math.pi*(dist**2))
+                if nearest_ap is None or nearest_ap[1] > dist:
+                    nearest_ap = (ap, dist)
+        if nearest_ap is not None:
+            s_int += P[nearest_ap[0][AP_TYPE]]/(4*math.pi*(nearest_ap[1]**2))
     return s_int/len(clients)
 ########################################################################################################################
 ##################### FUNZIONE CUSTOM DI MUTAZIONE  ####################################################################
@@ -101,13 +110,16 @@ def mutate_individual(individual, mu=0.0, sigma=1, indpb=INDPB):
     for i in range(len(individual)):
         #Mutate X
         if random.random() < indpb:
-            individual[i][X] += random.gauss(mu, sigma)
+            #individual[i][X] += random.gauss(mu, sigma)
+            individual[i][X] = round(individual[i][X] + random.gauss(mu, sigma), 2)
         #Mutate Y
         if random.random() < indpb:
-            individual[i][Y] += random.gauss(mu, sigma)
+            #individual[i][Y] += random.gauss(mu, sigma)
+            individual[i][Y] = round(individual[i][Y] + random.gauss(mu, sigma), 2)
         #Mutate WIRE
         if random.random() < indpb:
-            individual[i][WIRE] = random.randint(-N_AP, N_AP)
+            individual[i][WIRE] = individual[random.randint(0,N_AP-1)][WIRE]
+            #individual[i][WIRE] = random.randint(-N_AP, N_AP)
             # if individual[i][WIRE] >= 0  and individual[i][WIRE] <= N_AP-1:
             #     individual[i][WIRE] = individual[individual[i][WIRE]][WIRE]
             # else:
@@ -298,7 +310,7 @@ def parallel_evolution():
     print_infos()
     islands = [toolbox.population(n=POP_SIZE) for i in range(N_ISLES)]
     with Parallel(n_jobs=N_JOBS) as parallel:
-        hof = tools.ParetoFront()
+        hof = tools.HallOfFame(POP_SIZE)
         it = 0
         while it == 0 or (it < N_GEN and not stop_cond(islands,STOP_CONDITION)):
         #for i in range(0, generations, migration_interval):
@@ -306,7 +318,7 @@ def parallel_evolution():
             res = parallel(delayed(single_evolver)(pop=island, n_gen=MIGRATION_INTERVAL, hof=hof, verbose=True) for island in islands)
             islands = []
             for pop, logbook, hofi in res:
-                hof.update(pop)
+                hof.update(hofi)
                 islands.append(pop)
             tools.migRing(islands, N_MIGRATION, tools.selBest) if N_ISLES > 1 else 0
             it += MIGRATION_INTERVAL
@@ -367,5 +379,7 @@ def single_main():
 
 
 if __name__ == "__main__":
-    #single_main()
-    parallel_main()
+    if N_ISLES < 2:
+        single_main()
+    else:
+        parallel_main()

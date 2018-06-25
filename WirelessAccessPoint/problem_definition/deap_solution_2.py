@@ -236,10 +236,7 @@ def save_results(path, pop, log=None):
         i += 1
         f.write("#fitness: \t"+str(individual.fitness.values))
         ap_graph = build_ap_graph(individual)
-        to_eval = []
-        for index in range(len(individual)):
-            if nx.has_path(ap_graph, SOURCE_CABLE, index):
-                to_eval.append(individual[index])
+        to_eval = list(individual)
         f.write("AP:"+str(len(to_eval))+"\n")
         for ap in to_eval:
             f.write(print_ind(ap))

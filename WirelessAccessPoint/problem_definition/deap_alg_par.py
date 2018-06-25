@@ -1,6 +1,6 @@
 import networkx as nx
 ######COSTANTI DI AMBIENTE
-SOL_TYPE = 0
+SOL_TYPE = 3
 X = 'x'
 Y = 'y'
 WIRE = 'wire'
@@ -31,11 +31,13 @@ elif SOL_TYPE == 1:
     WEIGHTS = (1.0,-1.0)
 elif SOL_TYPE == 2:
     WEIGHTS = (1.0, -1.0, 1.0)
+elif SOL_TYPE == 3:
+    WEIGHTS = (1.0, -1.0, -1.0, 1.0)
 #WEIGHTS = (1.0,-1.0)
 ####################PARAMETRI ALGORITMO GENETICO########################################################################
 N_IT = 1
-N_GEN = 700
-POP_SIZE = 300
+N_GEN = 1400
+POP_SIZE = 350
 MIGRATION_INTERVAL = 100
 MIGRATION_PERC = 2
 N_MIGRATION = int((POP_SIZE/100)*MIGRATION_PERC) if int((POP_SIZE/100)*MIGRATION_PERC) > 1 else 1

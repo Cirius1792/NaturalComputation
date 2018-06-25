@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" beforeDir="false" afterPath="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,44 +17,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/NaturalComputation$solution_evaluer2.coverage" NAME="solution_evaluer2 Coverage Results" MODIFIED="1529580483441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer" />
-    <SUITE FILE_PATH="coverage/NaturalComputation$deap_alg_par.coverage" NAME="deap_alg_par Coverage Results" MODIFIED="1529751087687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
-    <SUITE FILE_PATH="coverage/NaturalComputation$deap_solution_2.coverage" NAME="deap_solution_2 Coverage Results" MODIFIED="1529783825327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
-    <SUITE FILE_PATH="coverage/NaturalComputation$deap_solution.coverage" NAME="deap_solution Coverage Results" MODIFIED="1529782313980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$solution_evaluer2.coverage" NAME="solution_evaluer2 Coverage Results" MODIFIED="1529859921736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$deap_alg_par.coverage" NAME="deap_alg_par Coverage Results" MODIFIED="1529851515214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$deap_solution_2.coverage" NAME="deap_solution_2 Coverage Results" MODIFIED="1529846279935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
+    <SUITE FILE_PATH="coverage/NaturalComputation$deap_solution.coverage" NAME="deap_solution Coverage Results" MODIFIED="1529909038372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WirelessAccessPoint/problem_definition" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="deap_solution.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="288" column="77" selection-start-line="288" selection-start-column="77" selection-end-line="288" selection-end-column="77" />
+            <state relative-caret-position="314">
+              <caret line="300" column="77" selection-start-line="300" selection-start-column="77" selection-end-line="300" selection-end-column="77" />
               <folding>
                 <element signature="e#501#621#0" />
                 <element signature="e#763#1000#0" />
                 <element signature="e#1001#1121#0" />
                 <element signature="e#1293#1412#0" />
-                <element signature="e#2078#2162#0" />
-                <element signature="e#2199#2762#0" />
-                <element signature="e#2338#2746#0" />
-                <element signature="e#2542#2746#0" />
-                <element signature="e#2579#2746#0" />
-                <element signature="e#2796#3235#0" />
-                <element signature="e#2865#3201#0" />
-                <element signature="e#2962#3201#0" />
-                <element signature="e#3137#3178#0" />
-                <element signature="e#3276#3568#0" />
-                <element signature="e#3343#3538#0" />
-                <element signature="e#3377#3538#0" />
-                <element signature="e#3569#3689#0" />
-                <element signature="e#4646#4766#0" />
-                <element signature="e#4935#5619#0" />
-                <element signature="e#5043#5185#0" />
-                <element signature="e#5892#7299#0" />
-                <element signature="e#7347#7714#0" />
-                <element signature="e#7739#8325#0" />
-                <element signature="e#8351#8528#0" />
-                <element signature="e#8563#10118#0" />
               </folding>
             </state>
           </provider>
@@ -61,8 +42,8 @@
       <file leaf-file-name="solution_evaluer2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="717">
+              <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -70,11 +51,8 @@
       <file leaf-file-name="deap_solution_2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="363" column="19" selection-start-line="363" selection-start-column="19" selection-end-line="363" selection-end-column="19" />
-              <folding>
-                <element signature="e#3709#4225#0" />
-              </folding>
+            <state relative-caret-position="1122">
+              <caret line="88" selection-start-line="88" selection-end-line="101" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -82,11 +60,8 @@
       <file leaf-file-name="deap_alg_par.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-              <folding>
-                <element signature="e#1275#1548#0" />
-              </folding>
+            <state relative-caret-position="306">
+              <caret line="42" column="97" selection-start-line="42" selection-start-column="97" selection-end-line="42" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -126,8 +101,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/res/1529578130.127105/1529578130.127105.txt" />
-        <option value="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py" />
+        <option value="$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py" />
         <option value="$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py" />
       </list>
@@ -169,6 +144,19 @@
               <item name="NaturalComputation" type="b2602c69:ProjectViewProjectNode" />
               <item name="NaturalComputation" type="462c0819:PsiDirectoryNode" />
               <item name="WirelessAccessPoint" type="462c0819:PsiDirectoryNode" />
+              <item name="problem_definition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NaturalComputation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NaturalComputation" type="462c0819:PsiDirectoryNode" />
+              <item name="WirelessAccessPoint" type="462c0819:PsiDirectoryNode" />
+              <item name="problem_definition" type="462c0819:PsiDirectoryNode" />
+              <item name="res400" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NaturalComputation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NaturalComputation" type="462c0819:PsiDirectoryNode" />
+              <item name="WirelessAccessPoint" type="462c0819:PsiDirectoryNode" />
               <item name="solution_evaluer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -194,7 +182,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.deap_solution_2">
+  <component name="RunManager" selected="Python.deap_solution">
     <configuration name="deap_alg_par" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AccessPointNC" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -279,10 +267,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.deap_solution_2" />
         <item itemvalue="Python.deap_solution" />
-        <item itemvalue="Python.deap_alg_par" />
         <item itemvalue="Python.solution_evaluer2" />
+        <item itemvalue="Python.deap_alg_par" />
+        <item itemvalue="Python.deap_solution_2" />
       </list>
     </recent_temporary>
   </component>
@@ -307,9 +295,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.40522876" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40522876" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.20588236" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14285715" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14605543" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.29104477" />
@@ -327,15 +315,14 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.40778252" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.29104477" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.40778252" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40522876" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286517" />
       <window_info anchor="bottom" id="Python Console" order="10" />
@@ -343,10 +330,11 @@
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.20588236" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32897604" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.29104477" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32897604" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -365,17 +353,17 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py</url>
-          <line>69</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py</url>
+          <line>236</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py</url>
-          <line>99</line>
-          <option name="timeStamp" value="13" />
+          <line>103</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="19" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -420,26 +408,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding>
-            <element signature="e#1275#1548#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6035">
-          <caret line="377" column="21" lean-forward="true" selection-start-line="377" selection-start-column="21" selection-end-line="377" selection-end-column="21" />
-          <folding>
-            <element signature="e#3709#4225#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6440">
@@ -449,27 +417,6 @@
             <element signature="e#763#1000#0" />
             <element signature="e#1001#1121#0" />
             <element signature="e#1293#1412#0" />
-            <element signature="e#2078#2162#0" />
-            <element signature="e#2199#2762#0" />
-            <element signature="e#2338#2746#0" />
-            <element signature="e#2542#2746#0" />
-            <element signature="e#2579#2746#0" />
-            <element signature="e#2796#3235#0" />
-            <element signature="e#2865#3201#0" />
-            <element signature="e#2962#3201#0" />
-            <element signature="e#3137#3178#0" />
-            <element signature="e#3276#3568#0" />
-            <element signature="e#3343#3538#0" />
-            <element signature="e#3377#3538#0" />
-            <element signature="e#3569#3689#0" />
-            <element signature="e#4646#4766#0" />
-            <element signature="e#4935#5619#0" />
-            <element signature="e#5043#5185#0" />
-            <element signature="e#5892#7299#0" />
-            <element signature="e#7347#7714#0" />
-            <element signature="e#7739#8325#0" />
-            <element signature="e#8351#8528#0" />
-            <element signature="e#8563#10118#0" />
           </folding>
         </state>
       </provider>
@@ -485,9 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding>
-            <element signature="e#1275#1548#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,27 +472,6 @@
             <element signature="e#763#1000#0" />
             <element signature="e#1001#1121#0" />
             <element signature="e#1293#1412#0" />
-            <element signature="e#2078#2162#0" />
-            <element signature="e#2199#2762#0" />
-            <element signature="e#2338#2746#0" />
-            <element signature="e#2542#2746#0" />
-            <element signature="e#2579#2746#0" />
-            <element signature="e#2796#3235#0" />
-            <element signature="e#2865#3201#0" />
-            <element signature="e#2962#3201#0" />
-            <element signature="e#3137#3178#0" />
-            <element signature="e#3276#3568#0" />
-            <element signature="e#3343#3538#0" />
-            <element signature="e#3377#3538#0" />
-            <element signature="e#3569#3689#0" />
-            <element signature="e#4646#4766#0" />
-            <element signature="e#4935#5619#0" />
-            <element signature="e#5043#5185#0" />
-            <element signature="e#5892#7299#0" />
-            <element signature="e#7347#7714#0" />
-            <element signature="e#7739#8325#0" />
-            <element signature="e#8351#8528#0" />
-            <element signature="e#8563#10118#0" />
           </folding>
         </state>
       </provider>
@@ -583,27 +506,6 @@
             <element signature="e#763#1000#0" />
             <element signature="e#1001#1121#0" />
             <element signature="e#1293#1412#0" />
-            <element signature="e#2078#2162#0" />
-            <element signature="e#2199#2762#0" />
-            <element signature="e#2338#2746#0" />
-            <element signature="e#2542#2746#0" />
-            <element signature="e#2579#2746#0" />
-            <element signature="e#2796#3235#0" />
-            <element signature="e#2865#3201#0" />
-            <element signature="e#2962#3201#0" />
-            <element signature="e#3137#3178#0" />
-            <element signature="e#3276#3568#0" />
-            <element signature="e#3343#3538#0" />
-            <element signature="e#3377#3538#0" />
-            <element signature="e#3569#3689#0" />
-            <element signature="e#4646#4766#0" />
-            <element signature="e#4935#5619#0" />
-            <element signature="e#5043#5185#0" />
-            <element signature="e#5892#7299#0" />
-            <element signature="e#7347#7714#0" />
-            <element signature="e#7739#8325#0" />
-            <element signature="e#8351#8528#0" />
-            <element signature="e#8563#10118#0" />
           </folding>
         </state>
       </provider>
@@ -645,27 +547,6 @@
             <element signature="e#763#1000#0" />
             <element signature="e#1001#1121#0" />
             <element signature="e#1293#1412#0" />
-            <element signature="e#2078#2162#0" />
-            <element signature="e#2199#2762#0" />
-            <element signature="e#2338#2746#0" />
-            <element signature="e#2542#2746#0" />
-            <element signature="e#2579#2746#0" />
-            <element signature="e#2796#3235#0" />
-            <element signature="e#2865#3201#0" />
-            <element signature="e#2962#3201#0" />
-            <element signature="e#3137#3178#0" />
-            <element signature="e#3276#3568#0" />
-            <element signature="e#3343#3538#0" />
-            <element signature="e#3377#3538#0" />
-            <element signature="e#3569#3689#0" />
-            <element signature="e#4646#4766#0" />
-            <element signature="e#4935#5619#0" />
-            <element signature="e#5043#5185#0" />
-            <element signature="e#5892#7299#0" />
-            <element signature="e#7347#7714#0" />
-            <element signature="e#7739#8325#0" />
-            <element signature="e#8351#8528#0" />
-            <element signature="e#8563#10118#0" />
           </folding>
         </state>
       </provider>
@@ -700,27 +581,6 @@
             <element signature="e#763#1000#0" />
             <element signature="e#1001#1121#0" />
             <element signature="e#1293#1412#0" />
-            <element signature="e#2078#2162#0" />
-            <element signature="e#2199#2762#0" />
-            <element signature="e#2338#2746#0" />
-            <element signature="e#2542#2746#0" />
-            <element signature="e#2579#2746#0" />
-            <element signature="e#2796#3235#0" />
-            <element signature="e#2865#3201#0" />
-            <element signature="e#2962#3201#0" />
-            <element signature="e#3137#3178#0" />
-            <element signature="e#3276#3568#0" />
-            <element signature="e#3343#3538#0" />
-            <element signature="e#3377#3538#0" />
-            <element signature="e#3569#3689#0" />
-            <element signature="e#4646#4766#0" />
-            <element signature="e#4935#5619#0" />
-            <element signature="e#5043#5185#0" />
-            <element signature="e#5892#7299#0" />
-            <element signature="e#7347#7714#0" />
-            <element signature="e#7739#8325#0" />
-            <element signature="e#8351#8528#0" />
-            <element signature="e#8563#10118#0" />
           </folding>
         </state>
       </provider>
@@ -755,27 +615,6 @@
             <element signature="e#763#1000#0" />
             <element signature="e#1001#1121#0" />
             <element signature="e#1293#1412#0" />
-            <element signature="e#2078#2162#0" />
-            <element signature="e#2199#2762#0" />
-            <element signature="e#2338#2746#0" />
-            <element signature="e#2542#2746#0" />
-            <element signature="e#2579#2746#0" />
-            <element signature="e#2796#3235#0" />
-            <element signature="e#2865#3201#0" />
-            <element signature="e#2962#3201#0" />
-            <element signature="e#3137#3178#0" />
-            <element signature="e#3276#3568#0" />
-            <element signature="e#3343#3538#0" />
-            <element signature="e#3377#3538#0" />
-            <element signature="e#3569#3689#0" />
-            <element signature="e#4646#4766#0" />
-            <element signature="e#4935#5619#0" />
-            <element signature="e#5043#5185#0" />
-            <element signature="e#5892#7299#0" />
-            <element signature="e#7347#7714#0" />
-            <element signature="e#7739#8325#0" />
-            <element signature="e#8351#8528#0" />
-            <element signature="e#8563#10118#0" />
           </folding>
         </state>
       </provider>
@@ -817,13 +656,6 @@
         <state relative-caret-position="-627" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/deap/algorithms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="172" selection-start-line="172" selection-end-line="172" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/networkx/classes/graph.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -838,13 +670,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/res/1529578130.127105/1529578130.127105.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="95" column="60" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/res/1529578130.127105/1529578130.127105.txt" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -856,13 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_exec2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -887,71 +706,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/deap/algorithms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="151" selection-start-line="151" selection-end-line="151" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="587" selection-start-line="587" selection-end-line="587" />
+        <state relative-caret-position="10897">
+          <caret line="649" selection-start-line="649" selection-end-line="649" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/cbook/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="173">
+          <caret line="614" selection-start-line="614" selection-end-line="614" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_exec2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="288" column="77" selection-start-line="288" selection-start-column="77" selection-end-line="288" selection-end-column="77" />
-          <folding>
-            <element signature="e#501#621#0" />
-            <element signature="e#763#1000#0" />
-            <element signature="e#1001#1121#0" />
-            <element signature="e#1293#1412#0" />
-            <element signature="e#2078#2162#0" />
-            <element signature="e#2199#2762#0" />
-            <element signature="e#2338#2746#0" />
-            <element signature="e#2542#2746#0" />
-            <element signature="e#2579#2746#0" />
-            <element signature="e#2796#3235#0" />
-            <element signature="e#2865#3201#0" />
-            <element signature="e#2962#3201#0" />
-            <element signature="e#3137#3178#0" />
-            <element signature="e#3276#3568#0" />
-            <element signature="e#3343#3538#0" />
-            <element signature="e#3377#3538#0" />
-            <element signature="e#3569#3689#0" />
-            <element signature="e#4646#4766#0" />
-            <element signature="e#4935#5619#0" />
-            <element signature="e#5043#5185#0" />
-            <element signature="e#5892#7299#0" />
-            <element signature="e#7347#7714#0" />
-            <element signature="e#7739#8325#0" />
-            <element signature="e#8351#8528#0" />
-            <element signature="e#8563#10118#0" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_vars.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="375" selection-start-line="375" selection-end-line="375" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution_2.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="88" selection-start-line="88" selection-end-line="101" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/solution_evaluer/solution_evaluer2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="717">
+          <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_solution.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
-          <caret line="363" column="19" selection-start-line="363" selection-start-column="19" selection-end-line="363" selection-end-column="19" />
+          <caret line="300" column="77" selection-start-line="300" selection-start-column="77" selection-end-line="300" selection-end-column="77" />
           <folding>
-            <element signature="e#3709#4225#0" />
+            <element signature="e#501#621#0" />
+            <element signature="e#763#1000#0" />
+            <element signature="e#1001#1121#0" />
+            <element signature="e#1293#1412#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WirelessAccessPoint/problem_definition/deap_alg_par.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding>
-            <element signature="e#1275#1548#0" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="42" column="97" selection-start-line="42" selection-start-column="97" selection-end-line="42" selection-end-column="97" />
         </state>
       </provider>
     </entry>

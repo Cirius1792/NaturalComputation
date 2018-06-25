@@ -15,7 +15,7 @@ class SolutionEvaluer:
 
     def _prepare_solution(self, sol):
         to_eval = []
-        if SOL_TYPE == 0:
+        if SOL_TYPE == 0 or SOL_TYPE == 3:
             ap_graph = build_ap_graph(sol)
             for index in range(len(sol)):
                 if nx.has_path(ap_graph, SOURCE_CABLE, index):
@@ -47,7 +47,7 @@ class SolutionEvaluer:
             apt[ap[AP_TYPE]] += 1
             x,y = ap[X],ap[Y]
             dst = sol[ap[WIRE]] if ap[WIRE] != N_AP+1 else {X:SOURCE_X, Y:SOURCE_Y}
-            plt.plot([x,dst[X]], [y, dst[Y]], lw=0.5, C='gray') if SOL_TYPE == 0 else 0
+            plt.plot([x,dst[X]], [y, dst[Y]], lw=0.5, C='gray') if SOL_TYPE == 0 or SOL_TYPE == 3 else 0
             circle = plt.Circle((x, y), RADIUS[ap[AP_TYPE]], color='green', alpha=0.3)
             plt.gcf().gca().add_artist(circle)
         plt.title("Covered "+str(covered)+" AP1: "+str(apt[0])+" AP2: "+str(apt[1]))
@@ -95,7 +95,12 @@ class SolutionEvaluer:
 
 if __name__ == '__main__':
     sol_eval = SolutionEvaluer()
-    pop = sol_eval.load_solution("../problem_definition/res/1529580332.6880443/1529580332.6880443.txt")
+    pop = sol_eval.load_solution("../problem_definition/res400/1529857907.4937742/1529857907.4937742.txt")
     print(str(pop[0]))
+    i=0
+    path = SAVE_PATH  + "1529857907.4937742/"
+    path = "../problem_definition/res400/1529857907.4937742/"
     for el in pop:
-        sol_eval.plot(el)
+        eval = SolutionEvaluer(path=path+ "run1529857907.4937742_ind" + str(i) + ".png")
+        eval.plot(el, save=True)
+        i+=1
